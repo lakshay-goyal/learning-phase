@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "updated": "2026-10-02",
+  "note": "Top-level domains. Folders must match an id (spaces become hyphens). Add a domain only with a <Domain>/_MOC.md.",
+  "domains": [
+    {
+      "id": "AI-Engineering",
+      "why": "agents, RAG, evals, LLM systems, vector search, orchestration"
+    },
+    {
+      "id": "Backend",
+      "why": "APIs, databases, queues, auth, system design"
+    },
+    {
+      "id": "Frontend",
+      "why": "UI, React, mobile, rendering, interaction"
+    },
+    {
+      "id": "DevOps",
+      "why": "CI/CD, Docker, cloud, observability"
+    },
+    {
+      "id": "CS-Fundamentals",
+      "why": "DSA, OS, networks, security primitives"
+    },
+    {
+      "id": "Product-And-Design",
+      "why": "UX flows, product thinking, client services"
+    }
+  ]
+}

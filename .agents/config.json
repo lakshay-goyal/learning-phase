@@ -1,0 +1,19 @@
+{
+  "harness": "learning-phase-obsidian",
+  "version": 1,
+  "wikiExclude": ["raw", ".agents", ".obsidian"],
+  "topicFiles": ["README.md", "resources.md", "build.md"],
+  "budgets": {
+    "readmeMaxLines": 150,
+    "resourcesMaxLines": 120,
+    "buildMaxLines": 150,
+    "resourcesMaxEntries": 10,
+    "maxWikilinksPerReadme": 10,
+    "maxRelated": 4
+  },
+  "requireMermaidInReadme": true,
+  "requireIndexEntry": true,
+  "taxonomyFile": ".agents/taxonomy.json",
+  "indexFile": "index.md",
+  "logFile": "log.md"
+}
