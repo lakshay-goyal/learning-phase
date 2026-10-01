@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "e0fdd930ac8c879e",
+        "id": "48a72f3fdea02e86",
         "type": "tabs",
         "children": [
           {
-            "id": "155a5b6952205347",
+            "id": "d0e72ad4aeedc115",
             "type": "leaf",
             "state": {
-              "type": "empty",
+              "type": "graph",
               "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -181,25 +181,43 @@
       "bases:Create new base": false
     }
   },
-  "active": "155a5b6952205347",
+  "active": "d0e72ad4aeedc115",
   "lastOpenFiles": [
-    ".agents/AGENTS.md",
-    "Welcome.md",
-    "log.md",
-    "index.md",
-    "raw/README.md",
-    "Product-And-Design/_MOC.md",
-    "Frontend/_MOC.md",
-    "DevOps/_MOC.md",
-    "CS-Fundamentals/_MOC.md",
-    "AI-Engineering/_MOC.md",
-    "Product-And-Design",
-    "CS-Fundamentals",
-    "DevOps",
-    "Frontend",
-    "Backend/_MOC.md",
-    "Backend",
-    "AI-Engineering",
-    "raw"
+    "DevOps/Git/notes/01-Fundamentals.md",
+    "DevOps/Git/Git.resources.md",
+    "DevOps/Git/context/Git.resources.md",
+    "DevOps/Git/context/Git.build.md",
+    "DevOps/Git/context",
+    "DevOps/Git/notes/08-GitLab-CLI-Automation.md",
+    "DevOps/Git/notes/07-GitHub-CLI.md",
+    "DevOps/Git/notes/06-Tags-Worktrees-Internals.md",
+    "DevOps/Git/notes/05-Undo-Recovery.md",
+    "DevOps/Git/notes/04-Merge-Rebase.md",
+    "DevOps/Git/notes/03-Branches-Remotes.md",
+    "DevOps/Git/notes/02-Commits-History.md",
+    "DevOps/Git/notes",
+    "DevOps/Git/Git.build.md",
+    "DevOps/Git/01-Fundamentals/01-Fundamentals.build.md",
+    "DevOps/_TmpV5/01-A/01-A.resources.md",
+    "DevOps/_TmpV5/02-B/02-B",
+    "DevOps/_TmpV5/02-B/02-B.md",
+    "DevOps/_TmpV5/01-A/01-A.md",
+    "DevOps/_TmpV5/01-A/01-A",
+    "DevOps/_TmpV5/_TmpV5.resources.md",
+    "DevOps/_TmpV5/_TmpV5.md",
+    "DevOps/_TmpV5/_TmpV5.build.md",
+    "DevOps/_TmpV5/02-B",
+    "DevOps/_TmpV5/01-A",
+    "DevOps/_TmpV5",
+    "DevOps/Git/03-Branches-Remotes/03-Branches-Remotes.build.md",
+    "DevOps/Git/02-Commits-History/02-Commits-History.build.md",
+    "DevOps/Git/01-Fundamentals/01-Fundamentals.resources.md",
+    "DevOps/Git/01-Fundamentals/01-Fundamentals.md",
+    "DevOps/Git/07-GitHub-CLI/07-GitHub-CLI.md",
+    "DevOps/Git/08-GitLab-CLI-Automation/08-GitLab-CLI-Automation.build.md",
+    "DevOps/Git/08-GitLab-CLI-Automation/08-GitLab-CLI-Automation.resources.md",
+    "DevOps/Git/08-GitLab-CLI-Automation",
+    "DevOps/Git/07-GitHub-CLI",
+    "DevOps/Git/06-Tags-Worktrees-Internals"
   ]
 }
