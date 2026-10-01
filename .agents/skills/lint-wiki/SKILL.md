@@ -13,8 +13,8 @@ missing Mermaid, missing index rows, `related` > 4, extra files in topic folders
 2. Orphans: any topic README with zero inbound links (outside its own folder) gets
 either a `related` backlink from the closest topic or a row-check in its domain MOC.
 Don't mesh everything — one inbound is enough.
-3. Stale: `updated` > 90 days → set `status: draft`, append `log.md` line, leave
+3. Stale: `updated` > 90 days → set `status: draft`, append a log line, leave
 content for human to re-trigger via `learn-topic`.
-4. Append `## [YYYY-MM-DD] lint | <result>` to `log.md`. Re-run `check.py` clean.
+4. Append `## [YYYY-MM-DD] lint | <result>` to `.agents/log.md`. Re-run `check.py` clean.
 
 Don't change explanations, don't add topics, don't touch `raw/`.

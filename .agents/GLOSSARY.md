@@ -18,14 +18,14 @@ _Avoid:_ category, field.
 : Immutable file under `raw/`. LLM reads, never edits. _Avoid:_ reference note.
 
 **Wiki page**
-: LLM-maintained markdown under a topic folder, `index.md`, or domain `_MOC.md`.
+: LLM-maintained markdown under a topic folder or domain `_MOC.md`.
 _Avoid:_ raw dump, clip.
 
 **Index**
-: `index.md` — content catalog, one row per topic. _Avoid:_ log, MOC.
+: `.agents/index.md` — content catalog (hidden from reading view), one row per topic. _Avoid:_ log, MOC.
 
 **Log**
-: `log.md` — append-only timeline of ingests/research/lints. _Avoid:_ index.
+: `.agents/log.md` — append-only timeline (hidden from reading view). _Avoid:_ index.
 
 **MOC**
 : `<Domain>/_MOC.md` — map of content for one domain, ≤30 lines.

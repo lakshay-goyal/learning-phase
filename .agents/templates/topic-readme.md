@@ -45,5 +45,5 @@ How to use this with AI on user/customer services. 2–3 concrete scenarios
 
 ## 7. Related
 
-- [[index|Index]] · [[../_MOC|Domain MOC]] · [[resources]] · [[build]]
+- [[../_MOC|Domain MOC]] · [[resources]] · [[build]]
 - Related notes: (≤4, must match frontmatter `related`)

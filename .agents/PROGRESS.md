@@ -3,7 +3,8 @@
 ## Current state
 
 3-layer gate live (L1 static / L2 scope+state / L3 evidence). `verify-topic` added;
-generator never self-grades. `check.py` green, dead keys 0.
+generator never self-grades. Bookkeeping (`.agents/AGENTS.md`, index, log, evidence, reviews)
+is gitignored and hidden from the reading view — vault shows only learning content.
 
 ## In flight
 

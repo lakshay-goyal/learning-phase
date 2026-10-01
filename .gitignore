@@ -1,0 +1,7 @@
+# Harness bookkeeping — agent-maintained, not for reading. Kept on disk, out of git and out of the reading view.
+.agents/AGENTS.md
+.agents/index.md
+.agents/log.md
+.agents/evidence/
+.agents/reviews/*
+!.agents/reviews/README.md

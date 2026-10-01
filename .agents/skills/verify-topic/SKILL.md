@@ -14,4 +14,4 @@ labels + connectedness? repo pinned, genuine (push/license/tests), study path re
 assignments doable? AI scenarios concrete? placeholders absent?
 3. Write `.agents/reviews/<slug>-YYYY-MM-DD.md` with per-section Accept/Revise + fixes.
 Never edit the topic. Never flip `human-reviewed`.
-4. Append `## [YYYY-MM-DD] lint | verify <slug> | <Accept|Revise>` to `log.md`.
+4. Append `## [YYYY-MM-DD] lint | verify <slug> | <Accept|Revise>` to `.agents/log.md`.

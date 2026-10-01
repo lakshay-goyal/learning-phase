@@ -10,7 +10,7 @@ Turn "research X" into one in-depth but compressed package. Deep process, concis
 
 ## Start (clock in)
 
-1. Read `AGENTS.md`, `.agents/taxonomy.json`, `index.md`, `.agents/feature_list.json`.
+1. Read `.agents/AGENTS.md`, `.agents/taxonomy.json`, `.agents/index.md`, `.agents/feature_list.json`.
 2. One topic at a time (WIP=1). Set matching feature `in-progress` or add one with
 (id, behavior, verification=`python3 .agents/bin/check.py`, state).
 3. Pick domain from taxonomy (niche → nest one deeper).
@@ -35,7 +35,7 @@ use cases, AI-leverage scenarios, missed aspects. One Mermaid diagram in README.
 
 1. Write receipt `.agents/evidence/<domain>-<slug>.json` (lowercase, `/`→`-`):
 `{slug, date, checks: ["python3 .agents/bin/check.py"], result}` — result `pass` only if gate passed.
-2. One row in `index.md`, one `## [YYYY-MM-DD] research | Topic | path` line in `log.md`,
+2. One row in `.agents/index.md`, one `## [YYYY-MM-DD] research | Topic | path` line in `.agents/log.md`,
 update `<Domain>/_MOC.md`, set feature back to `blocked`/`done` with evidence path.
 3. Run `python3 .agents/bin/check.py` (default gate) then optionally `--probe` for live
 URL warnings. Report: opened vs UNVERIFIED, repos inspected vs NOT INSPECTED, limits.
