@@ -6,6 +6,20 @@
       "verification": "python3 .agents/bin/check.py",
       "state": "done",
       "evidence": ".agents/bin/check.py exit 0, 0 errors, dead keys [] (2026-10-02)"
+    },
+    {
+      "id": "git-track",
+      "behavior": "DevOps/Git/ track with Git.md hub + 8 subtopics covering full Git + gh + glab syllabus, linked and searchable in Obsidian",
+      "verification": "python3 .agents/bin/check.py",
+      "state": "done",
+      "evidence": ".agents/evidence/devops-git-*.json (8 receipts), check.py 8 topics green (2026-10-02)"
+    },
+    {
+      "id": "git-track-filenames",
+      "behavior": "Git track uses folder-named files (<Slug>.md etc., no README/build/resources-only names) so the Obsidian graph shows real titles",
+      "verification": "python3 .agents/bin/check.py",
+      "state": "done",
+      "evidence": "check.py v4 8 topics 1 track 0 errors (2026-10-02), 24 files renamed"
     }
   ]
 }

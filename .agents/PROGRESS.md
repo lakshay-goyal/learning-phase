@@ -2,13 +2,14 @@
 
 ## Current state
 
-3-layer gate live (L1 static / L2 scope+state / L3 evidence). `verify-topic` added;
-generator never self-grades. Bookkeeping (`.agents/AGENTS.md`, index, log, evidence, reviews)
-is gitignored and hidden from the reading view — vault shows only learning content.
+Harness v4 (tracks: hub + subtopics, budgets README350/build250/hub150; HARD RULE: folder-named files, banned generic basenames fail the gate). Git track live:
+`DevOps/Git/Git.md` hub + 8 subtopics (fundamentals → commits → branches → merge →
+undo → internals → gh → glab), files named `<Slug>.md` / `<Slug>.resources.md` /
+`<Slug>.build.md` so the Obsidian graph shows real titles. Bookkeeping stays in `.agents/`, out of the reading view.
 
 ## In flight
 
-Nothing. (WIP = 1: one topic at a time.)
+Nothing. (WIP = 1: one track at a time. Git track done; next track unqueued.)
 
 ## Blocked
 
