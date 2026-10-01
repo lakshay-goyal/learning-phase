@@ -8,13 +8,13 @@ related: []
 
 # <Human Title> — Build
 
-## Production codebase to study (1–3, pinned)
+## Production codebase to study (1–3, pinned — required)
 
-| Repo | Stars / signals | Commit | Study guide |
+| Repo | Signals (stars / users / last push / license) | Commit | Study guide (real file path, end-to-end trace) |
 |---|---|---|---|
-| [org/repo](https://…) | … | `abc1234` | Read path: `a.py` → `b.py`; trace one end-to-end flow |
+| [org/repo](https://github.com/org/repo) | e.g. 12k★, used by X, push 2026-09, MIT | `abc1234` | Read `src/a.py` → `src/b.py`; trace one request flow |
 
-NOT INSPECTED if not opened. Prefer production-ready over tutorials.
+NOT INSPECTED if not opened — say so. Tutorial repos fail the gate's spirit; prefer deployed, tested codebases.
 
 ## Assignments (do 1, skip tutorial-hell)
 
@@ -22,9 +22,9 @@ NOT INSPECTED if not opened. Prefer production-ready over tutorials.
 2. **Medium (1–2d):** …
 3. **Client-ready:** … (who pays / who benefits)
 
-## Ideas & missed aspects
+## Ideas, use cases & missed aspects
 
-- …
+- AI-era scenario: … (domain + user + why this tech fits)
 - Aspect you might've missed: …
 
 ## Human feedback (only human edits)

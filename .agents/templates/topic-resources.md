@@ -8,20 +8,25 @@ related: []
 
 # <Human Title> — Resources
 
-> Most-connected first. 1 line why each. Mark UNVERIFIED if not opened.
+> Most-connected first. Every entry carries a trust label. No bare URLs.
 
 ## Connected reading path
 
-| # | Type | Title | Why this one |
-|---|---|---|---|
-| 1 | docs/blog/paper | [Title](https://…) | … |
+| # | Type | Title | Status | Why this one |
+|---|---|---|---|---|
+| 1 | docs | [Title](https://example.com) | OPENED 2026-10-02 | … |
+| 2 | paper | [Title](https://example.com) | UNVERIFIED — paywalled, used abstract only | … |
+
+Status ∈ `OPENED <date>` (you read it) / `UNVERIFIED — <reason>`. Dead links fail the gate — fix or remove.
 
 ## Papers (if deep topic)
 
-| Paper | Finding in 1 line | Link |
-|---|---|---|
-| … | … | … |
+| Paper | Finding in 1 line | Status | Link |
+|---|---|---|---|
+| … | … | OPENED … | … |
 
-## Source ledger
+## Source ledger (required)
 
-- Searched: … · Opened: … · Skipped (paywalled/dead): …
+- Searched (queries): …
+- Opened (≥5): … · Skipped with reason: …
+- Connectedness: which sources cite each other (1–2 lines — proves "most popular + connected", not random links)

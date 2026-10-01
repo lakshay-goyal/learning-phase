@@ -2,7 +2,8 @@
 
 ## Current state
 
-Harness scaffolded for the `learning phase` Obsidian vault. No topics researched yet.
+3-layer gate live (L1 static / L2 scope+state / L3 evidence). `verify-topic` added;
+generator never self-grades. `check.py` green, dead keys 0.
 
 ## In flight
 
@@ -21,4 +22,4 @@ python3 .agents/bin/check.py
 
 ## Last green baseline
 
-`python3 .agents/bin/check.py` → 0 topics, 0 errors, 0 warnings (2026-10-02).
+`python3 .agents/bin/check.py` → [v2] 0 topics, VCR 1/1=1.00, 0 errors (2026-10-02). Dead keys: none.

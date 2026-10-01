@@ -1,37 +1,42 @@
 ---
 name: learn-topic
-description: "Deep-research a topic into one Domain/Topic folder (3 files) + index + log."
+description: "Deep-research a topic into one Domain/Topic folder (3 files) + receipt + index + log."
 invocation: model
 ---
 
 # Learn-Topic
 
-Turn "research X" into one concise, visual, human-reviewable package. Compress — never dump.
+Turn "research X" into one in-depth but compressed package. Deep process, concise output.
 
-## Start
+## Start (clock in)
 
-1. Read `AGENTS.md`, `.agents/taxonomy.json`, `index.md`.
-2. Pick domain from taxonomy (niche → nest one deeper, e.g. `AI-Engineering/RAG/<Slug>/`).
-3. Web-research: prioritize docs → papers → popular connected blogs → production OSS repos (stars + recent commits + real users). Record misses honestly.
+1. Read `AGENTS.md`, `.agents/taxonomy.json`, `index.md`, `.agents/feature_list.json`.
+2. One topic at a time (WIP=1). Set matching feature `in-progress` or add one with
+(id, behavior, verification=`python3 .agents/bin/check.py`, state).
+3. Pick domain from taxonomy (niche → nest one deeper).
+
+## Research protocol (depth is mandatory, dumping is forbidden)
+
+1. Order: official docs → papers → most-linked blogs → GitHub (stars + recent push +
+real users + license). Prefer sources that cite each other — record connectedness.
+2. Open ≥5 sources. For each repo candidate check: last push <12mo, tests/CI present,
+real file paths noted. Never invent file paths or SHAs — open the repo or mark NOT INSPECTED.
+3. Classify every link OPENED <date> or UNVERIFIED + reason. Version-pin repos (short SHA).
+4. Compress: README ~800–1200 words. Cut anything that doesn't change what the human builds.
 
 ## Write (exactly 3 files, from templates)
 
-- `<Domain>/<Slug>/README.md` ← `.agents/templates/topic-readme.md`
-- `<Domain>/<Slug>/resources.md` ← `.agents/templates/topic-resources.md`
-- `<Domain>/<Slug>/build.md` ← `.agents/templates/topic-build.md`
+- `<Domain>/<Slug>/README.md`, `resources.md`, `build.md` — follow template headings exactly.
+- Must cover the six: resources, pinned OSS codebase + reading guide, 3 assignments,
+use cases, AI-leverage scenarios, missed aspects. One Mermaid diagram in README.
+- Frontmatter `status: researched`. Never `human-reviewed`.
 
-Keep budgets in `.agents/config.json`. One Mermaid diagram in README. Wikilinks ≤ budget.
-`related` ≤ 4, only to notes that exist.
+## Finish (evidence before claims)
 
-Must cover the six: resources, OSS codebase (pinned commit, reading guide — go to the
-repo, don't tutorial-hell), assignment (3 levels in `build.md`), use cases, AI-era
-leverage scenarios, missed aspects.
-
-## Finish
-
-1. Set frontmatter `status: researched`, `updated: <today>`.
-2. Add one row to `index.md`, append one line to `log.md`, create/update `<Domain>/_MOC.md` (≤30 lines).
-3. Run `python3 .agents/bin/check.py` and fix failures. Report: what was researched,
-paths, what was inspected vs UNVERIFIED/NOT INSPECTED, limits.
-
-Never mark `human-reviewed` — human flips that checkbox in `build.md`.
+1. Write receipt `.agents/evidence/<domain>-<slug>.json` (lowercase, `/`→`-`):
+`{slug, date, checks: ["python3 .agents/bin/check.py"], result}` — result `pass` only if gate passed.
+2. One row in `index.md`, one `## [YYYY-MM-DD] research | Topic | path` line in `log.md`,
+update `<Domain>/_MOC.md`, set feature back to `blocked`/`done` with evidence path.
+3. Run `python3 .agents/bin/check.py` (default gate) then optionally `--probe` for live
+URL warnings. Report: opened vs UNVERIFIED, repos inspected vs NOT INSPECTED, limits.
+4. Suggest `verify-topic` for an independent check — do not self-certify quality.

@@ -1,0 +1,11 @@
+{
+  "features": [
+    {
+      "id": "harness-state-and-verification",
+      "behavior": "Vault has machine-readable scope, decision log, evidence receipts, and a 3-layer gate so research depth is verified, not asserted",
+      "verification": "python3 .agents/bin/check.py",
+      "state": "done",
+      "evidence": ".agents/bin/check.py exit 0, 0 errors, dead keys [] (2026-10-02)"
+    }
+  ]
+}

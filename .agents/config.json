@@ -1,6 +1,6 @@
 {
   "harness": "learning-phase-obsidian",
-  "version": 1,
+  "version": 2,
   "wikiExclude": ["raw", ".agents", ".obsidian"],
   "topicFiles": ["README.md", "resources.md", "build.md"],
   "budgets": {
@@ -13,7 +13,14 @@
   },
   "requireMermaidInReadme": true,
   "requireIndexEntry": true,
+  "requireEvidenceReceipt": true,
+  "requireResourceVerification": true,
+  "minResourceEntries": 5,
   "taxonomyFile": ".agents/taxonomy.json",
   "indexFile": "index.md",
-  "logFile": "log.md"
+  "logFile": "log.md",
+  "featureListPath": ".agents/feature_list.json",
+  "evidenceDir": ".agents/evidence",
+  "reviewsDir": ".agents/reviews",
+  "decisionsFile": ".agents/DECISIONS.md"
 }
