@@ -20,6 +20,27 @@
       "verification": "python3 .agents/bin/check.py",
       "state": "done",
       "evidence": "check.py v4 8 topics 1 track 0 errors (2026-10-02), 24 files renamed"
+    },
+    {
+      "id": "harness-v5-track-level-resources-build",
+      "behavior": "Harness v5: ONE resources + ONE build per topic/track (note-only subtopics); resources = beyond-scope only, build = whole-topic mini-projects; gate enforces with legacy grandfathering",
+      "verification": "python3 .agents/bin/check.py",
+      "state": "done",
+      "evidence": "check.py v5 9 topics 1 track 0 errors 1 legacy-migrate warning (2026-10-02); throwaway v5 track verified green then removed"
+    },
+    {
+      "id": "git-track-v5-migration",
+      "behavior": "Git track migrated to v5: Git.resources.md + Git.build.md at track level (12-entry beyond-scope path, 3 mini-projects, 3 pinned repos), 8 note-only subtopics, links repointed",
+      "verification": "python3 .agents/bin/check.py",
+      "state": "done",
+      "evidence": "check.py v5 9 topics 1 track 0 errors 0 warnings (2026-10-02), .agents/evidence/devops-git.json, 16 per-subtopic files removed"
+    },
+    {
+      "id": "git-track-notes-context-folders",
+      "behavior": "Git track folded into notes/ (8 notes) + context/ (resources+build); harness v6 defines this layout and the gate enforces it",
+      "verification": "python3 .agents/bin/check.py",
+      "state": "done",
+      "evidence": "check.py v6 8 notes 1 track 0 errors 0 warnings (2026-10-02), .agents/evidence/devops-git.json"
     }
   ]
 }

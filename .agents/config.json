@@ -1,8 +1,10 @@
 {
   "harness": "learning-phase-obsidian",
-  "version": 4,
+  "version": 6,
   "wikiExclude": ["raw", ".agents", ".obsidian"],
   "topicFiles": ["{Folder}.md", "{Folder}.resources.md", "{Folder}.build.md"],
+  "trackFiles": ["{Track}.md", "notes/{Slug}.md", "context/{Track}.resources.md", "context/{Track}.build.md"],
+  "subtopicFiles": ["notes/{Slug}.md"],
   "bannedFilenames": ["readme.md", "resources.md", "sources.md", "source.md", "build.md", "notes.md", "note.md", "doc.md", "docs.md", "content.md", "page.md", "untitled.md", "new-note.md", "zmi.md"],
   "trackHubSuffix": ".md",
   "budgets": {

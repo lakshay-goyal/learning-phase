@@ -8,15 +8,30 @@ related: []
 
 # <Human Title>
 
-> 2-line intuition (Karpathy-style): plain words, no jargon.
+> 2-line intuition in plain words. No jargon. Say what it does + why a beginner should care.
 
 ## 1. Intuition
 
-Mental model + one concrete example.
+_For a fresher with zero background. 3–5 very short lines max. Plain words first — if you must use a technical term, explain it in 5–8 words in brackets on first use. One everyday comparison max, no storytelling. End with one tiny code/command snippet that shows the idea working._
+
+Example shape (replace with real content):
+
+```bash
+# simplest possible demo of this idea
+<command> --help
+```
+
+> You can now: <one-line win, e.g. "explain what X does in one sentence">
 
 ## 2. How it works
 
-5–8 bullets max. Mechanism only. Cut trivia.
+_5–8 bullets max. One idea per bullet, 1–2 lines each. Rule: snippet beats paragraph — every bullet that describes a mechanism gets a minimal runnable example right under it. No jargon dumps; define terms inline._
+
+- **<Plain name for step/concept>** — 1 line in simple words.
+  ```bash
+  <minimal command / code, 1–5 lines>
+  # expected output: <1 line>
+  ```
 
 ## 3. Visual
 
@@ -25,25 +40,34 @@ flowchart LR
   A[Input] --> B[Core step] --> C[Output]
 ```
 
-One diagram: flow, architecture, or user-flow. Graph over paragraphs.
+_One diagram only: flow, architecture, or user-flow. Must match the snippets above, not introduce new concepts._
 
 ## 4. Use cases
 
-| Use case | When to use | When not to |
+_Real jobs/tasks only — no generic rows. Each row = where a fresher meets this at work. Must include 1 edge case / common-mistake row._
+
+| Use case | When to use (concrete example) | When NOT to / edge case |
 |---|---|---|
-| … | … | … |
+| … | `…` + 1-line why | … + what breaks + fix `…` |
 
 ## 5. AI-era leverage
 
-How to use this with AI on user/customer services. 2–3 concrete scenarios
-(domain + who benefits + why this tech fits).
+_2–3 concrete scenarios only (who + task + why this tech fits). Each with one copy-paste prompt or command. No generic "AI can help" lines._
+
+- **<Job/task>:** … `…`
+  ```text
+  Ask AI: "<exact short prompt that does the task>"
+  ```
 
 ## 6. Limits & tradeoffs
 
-- …
-- Open aspects: … (points to [[resources]] and [[build]])
+_3–5 bullets max. Each: plain-word limit + what breaks + what to do instead (with snippet). Point to detail, don't repeat it._
+
+- … — breaks as: … — instead do: `…`
+- Open aspects: … (in [[resources]] and [[build]])
 
 ## 7. Related
 
-- [[../_MOC|Domain MOC]] · [[resources]] · [[build]]
-- Related notes: (≤4, must match frontmatter `related`)
+_In a track (file lives at `notes/<Slug>.md`): link the hub + `[[../context/<Track>.resources]]` + `[[../context/<Track>.build]]` + ≤4 sibling notes as `[[<Slug>|Title]]` (must match frontmatter `related`). Single topic: link `[[../_MOC|Domain MOC]]` + `[[resources]]` + `[[build]]` + ≤4 notes._
+
+- …
