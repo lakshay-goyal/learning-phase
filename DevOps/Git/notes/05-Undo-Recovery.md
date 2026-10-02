@@ -131,4 +131,4 @@ Golden rule: pushed → only `revert` (add truth). Private → `reset`/`amend`/`
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[02-Commits-History|02 Commits]] · [[04-Merge-Rebase|04 Merge]] · [[06-Tags-Worktrees-Internals|06 Internals]] · [[../../_MOC|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[02-Commits-History|02 Commits]] · [[04-Merge-Rebase|04 Merge]] · [[06-Tags-Worktrees-Internals|06 Internals]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]

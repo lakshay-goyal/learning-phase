@@ -133,4 +133,4 @@ One model: everything is fingerprint-addressed content; refs are human names sli
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[05-Undo-Recovery|05 Undo]] · [[07-GitHub-CLI|07 gh]] · [[../../_MOC|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[05-Undo-Recovery|05 Undo]] · [[07-GitHub-CLI|07 gh]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]

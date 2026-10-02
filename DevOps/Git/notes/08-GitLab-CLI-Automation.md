@@ -117,4 +117,4 @@ One map to memorize: PR=MR, `gh`=GitHub, `glab`=GitLab, `api+jq`=both.
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[07-GitHub-CLI|07 gh]] · [[01-Fundamentals|01 Fundamentals]] · [[../../_MOC|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[07-GitHub-CLI|07 gh]] · [[01-Fundamentals|01 Fundamentals]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]

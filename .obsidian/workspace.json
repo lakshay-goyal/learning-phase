@@ -183,6 +183,11 @@
   },
   "active": "d0e72ad4aeedc115",
   "lastOpenFiles": [
+    "DevOps/_MOC.md",
+    "Claude_Code_CampusX.pdf",
+    "Unconfirmed 284922.crdownload",
+    "DevOps/DevOps.md",
+    "CS-Fundamentals/_MOC.md",
     "DevOps/Git/notes/01-Fundamentals.md",
     "DevOps/Git/Git.resources.md",
     "DevOps/Git/context/Git.resources.md",
@@ -213,11 +218,6 @@
     "DevOps/Git/02-Commits-History/02-Commits-History.build.md",
     "DevOps/Git/01-Fundamentals/01-Fundamentals.resources.md",
     "DevOps/Git/01-Fundamentals/01-Fundamentals.md",
-    "DevOps/Git/07-GitHub-CLI/07-GitHub-CLI.md",
-    "DevOps/Git/08-GitLab-CLI-Automation/08-GitLab-CLI-Automation.build.md",
-    "DevOps/Git/08-GitLab-CLI-Automation/08-GitLab-CLI-Automation.resources.md",
-    "DevOps/Git/08-GitLab-CLI-Automation",
-    "DevOps/Git/07-GitHub-CLI",
-    "DevOps/Git/06-Tags-Worktrees-Internals"
+    "DevOps/Git/08-GitLab-CLI-Automation"
   ]
 }

@@ -132,4 +132,4 @@ Undo chooser: uncommitted file → `restore`; framed file → `restore --staged`
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[01-Fundamentals|01 Fundamentals]] · [[03-Branches-Remotes|03 Branches]] · [[05-Undo-Recovery|05 Undo]] · [[../../_MOC|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[01-Fundamentals|01 Fundamentals]] · [[03-Branches-Remotes|03 Branches]] · [[05-Undo-Recovery|05 Undo]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]

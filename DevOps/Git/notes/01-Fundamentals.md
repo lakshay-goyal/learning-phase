@@ -142,4 +142,4 @@ Daily loop to memorize: `status` → `add -p` → `diff --staged` → `commit` �
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[02-Commits-History|02 Commits]] · [[03-Branches-Remotes|03 Branches]] · [[../../_MOC|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[02-Commits-History|02 Commits]] · [[03-Branches-Remotes|03 Branches]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]

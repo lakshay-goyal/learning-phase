@@ -127,4 +127,4 @@ Terminal loop to memorize: `pr create` → `pr view` → `pr checkout` → `pr d
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[06-Tags-Worktrees-Internals|06 Tags]] · [[08-GitLab-CLI-Automation|08 glab]] · [[../../_MOC|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[06-Tags-Worktrees-Internals|06 Tags]] · [[08-GitLab-CLI-Automation|08 glab]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
