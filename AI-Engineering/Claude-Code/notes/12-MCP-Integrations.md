@@ -111,7 +111,7 @@ Also tabulated: MCP facts, default tools, transports, GitHub prompts, top 10.
 
 - Local needs absolute paths — breaks as: relative DB miss — instead do: copy full path.
 
-- Open aspects: hook-guard MCP in [[13-Hooks-Plugins-Deploy|13 Hooks]]; plugin bundle in [[13-Hooks-Plugins-Deploy|13 Hooks]].
+- Open aspects: hook-guard MCP in [[13-Hooks|13 Hooks]]; plugin bundle in [[14-Plugins-Deploy|14 Plugins]].
 
 ## 7. Related
 

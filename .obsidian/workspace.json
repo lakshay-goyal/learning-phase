@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI-Engineering/Claude-Code/notes/13-Hooks-Plugins-Deploy.md",
+                "file": "AI-Engineering/Claude-Code/notes/14-Plugins-Deploy.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "13-Hooks-Plugins-Deploy"
+              "title": "14-Plugins-Deploy"
             }
           }
         ]
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AI-Engineering/Claude-Code/notes/13-Hooks-Plugins-Deploy.md",
+                "file": "AI-Engineering/Claude-Code/notes/14-Plugins-Deploy.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AI-Engineering/Claude-Code/notes/13-Hooks-Plugins-Deploy.md",
+                "file": "AI-Engineering/Claude-Code/notes/14-Plugins-Deploy.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI-Engineering/Claude-Code/notes/13-Hooks-Plugins-Deploy.md",
+                "file": "AI-Engineering/Claude-Code/notes/14-Plugins-Deploy.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -190,11 +190,13 @@
   },
   "active": "d0e72ad4aeedc115",
   "lastOpenFiles": [
+    "AI-Engineering/Claude-Code/notes/13-Hooks.md",
     "AI-Engineering/Claude-Code/notes/12-MCP-Integrations.md",
+    "AI-Engineering/Claude-Code/notes/13-Hooks-Plugins-Deploy.md",
+    "AI-Engineering/Claude-Code/notes/14-Plugins-Deploy.md",
     "AI-Engineering/Claude-Code/context/Claude-Code.resources.md",
     "AI-Engineering/Claude-Code/notes/11-Custom-Subagents.md",
     "AI-Engineering/Claude-Code/notes/10-Subagents.md",
-    "AI-Engineering/Claude-Code/notes/13-Hooks-Plugins-Deploy.md",
     "Claude_Code_CampusX.pdf",
     "AI-Engineering/Claude-Code/notes/08-Custom-Slash-Commands-Auth.md",
     "AI-Engineering/Claude-Code/notes/07-Spec-Driven-Plan-Mode.md",
@@ -223,8 +225,6 @@
     "CS-Fundamentals/_MOC.md",
     "DevOps/Git/notes/01-Fundamentals.md",
     "DevOps/Git/Git.resources.md",
-    "DevOps/Git/context/Git.resources.md",
-    "DevOps/Git/context/Git.build.md",
     "DevOps/Git/context"
   ]
 }

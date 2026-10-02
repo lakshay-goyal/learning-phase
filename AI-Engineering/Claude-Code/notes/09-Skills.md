@@ -112,7 +112,7 @@ Also tabulated: PPT gap, 5 prompt fails, prompts vs skills, folder contents, 3 l
 
 - Body stays in context after load — breaks as: long body = recurring cost — instead do: concise steps, link details to L3.
 
-- Open aspects: distribute via [[13-Hooks-Plugins-Deploy|13 Plugins]]; isolate via [[10-Subagents|10 Subagents]].
+- Open aspects: distribute via [[14-Plugins-Deploy|14 Plugins]]; isolate via [[10-Subagents|10 Subagents]].
 
 ## 7. Related
 

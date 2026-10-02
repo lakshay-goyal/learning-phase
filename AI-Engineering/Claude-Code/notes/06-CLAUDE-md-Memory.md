@@ -138,7 +138,7 @@ Also tabulated: project vs global .claude, 5 types matrix, 3 big-file fixes, mem
 
 - Memory is local — breaks as: new laptop = blank — instead do: commit CLAUDE.md, copy memory.md manually.
 
-- Open aspects: skills pack procedures in [[09-Skills|09 Skills]]; enforcement via hooks in [[13-Hooks-Plugins-Deploy|13 Hooks]].
+- Open aspects: skills pack procedures in [[09-Skills|09 Skills]]; enforcement via hooks in [[13-Hooks|13 Hooks]].
 
 ## 7. Related
 

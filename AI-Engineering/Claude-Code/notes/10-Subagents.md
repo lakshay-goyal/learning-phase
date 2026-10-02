@@ -125,7 +125,7 @@ Also tabulated: stateless calls, per-turn escalation, with/without plan tokens, 
 
 - Tests from code lie — breaks as: green but wrong — instead do: spec-first rule enforced.
 
-- Open aspects: hook guards in [[13-Hooks-Plugins-Deploy|13 Hooks]]; MCP tools per agent in [[12-MCP-Integrations|12 MCP]].
+- Open aspects: hook guards in [[13-Hooks|13 Hooks]]; MCP tools per agent in [[12-MCP-Integrations|12 MCP]].
 
 ## 7. Related
 

@@ -25,12 +25,13 @@ flowchart LR
   I --> J[10 Subagents]
   J --> K[11 Custom Subagents]
   K --> L[12 MCP]
-  L --> M[13 Hooks Deploy]
+  L --> M[13 Hooks]
+  M --> N[14 Plugins Deploy]
 ```
 
 ## How to use this track
 
-1. Go in order `01 → 13`, 15–30 min per note. Each builds on the last. Demo app throughout is Spendly (Flask expense tracker).
+1. Go in order `01 → 14`, 15–30 min per note. Each builds on the last. Demo app throughout is Spendly (Flask expense tracker).
 2. Each note is learn-with-snippets; `context/Claude-Code.resources.md` goes deeper (beyond-scope only); `context/Claude-Code.build.md` proves it with mini-projects.
 3. After each note you can: run one new real command (see table).
 
@@ -50,7 +51,8 @@ flowchart LR
 | 10 | [[notes/10-Subagents|Subagents]] | Statelessness, math, advantages, built-ins — you can explain why helpers exist |
 | 11 | [[notes/11-Custom-Subagents|Custom Subagents]] | Permissions, anatomy, test + review pipelines — you can design team specialists |
 | 12 | [[notes/12-MCP-Integrations|MCP Integrations]] | SQLite/Figma/GitHub, top 10, minimal setup — you can plug outside tools in |
-| 13 | [[notes/13-Hooks-Plugins-Deploy|Hooks, Plugins, Deploy]] | Harness, 7 hook uses, exit codes, plugin.json, Railway — you can enforce + distribute + deploy |
+| 13 | [[notes/13-Hooks|Hooks]] | Harness, 7 uses, exit codes, block script, ship flow — you can guarantee behavior |
+| 14 | [[notes/14-Plugins-Deploy|Plugins + Deploy]] | Rahul stack, manifest, marketplace, Railway — you can share + ship |
 
 ## Related
 
