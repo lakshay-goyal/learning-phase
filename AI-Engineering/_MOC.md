@@ -4,6 +4,6 @@
 
 ## Topics
 
-- _(none yet)_
+- [[Claude-Code/Claude-Code|Claude Code]] — agentic coding: setup → SDD → skills → subagents → MCP → hooks → deploy
 
 - [[../index|Index]]

@@ -41,6 +41,13 @@
       "verification": "python3 .agents/bin/check.py",
       "state": "done",
       "evidence": "check.py v6 8 notes 1 track 0 errors 0 warnings (2026-10-02), .agents/evidence/devops-git.json"
+    },
+    {
+      "id": "claude-code-track",
+      "behavior": "AI-Engineering/Claude-Code/ track with hub + 12 notes covering full CampusX Claude Code PDF (setup to plugins/deploy), linked and searchable",
+      "verification": "python3 .agents/bin/check.py",
+      "state": "done",
+      "evidence": ".agents/evidence/ai-engineering-claude-code.json, check.py v6 12 notes 1 track 0 errors 0 warnings (2026-10-02)"
     }
   ]
 }

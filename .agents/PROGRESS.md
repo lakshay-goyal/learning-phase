@@ -6,11 +6,15 @@ Harness v6 (tracks: hub + `notes/<Slug>.md` per subtopic + `context/<Track>.reso
 `DevOps/Git/Git.md` hub + `notes/` (8 notes: fundamentals → commits → branches → merge →
 undo → internals → gh → glab) + `context/` (`Git.resources.md` + `Git.build.md`),
 files self-describing (`notes/01-Fundamentals.md`, …)
-so the Obsidian graph shows real titles. Bookkeeping stays in `.agents/`, out of the reading view.
+so the Obsidian graph shows real titles. Claude Code track live:
+`AI-Engineering/Claude-Code/Claude-Code.md` hub + `notes/` (12 notes: foundations → setup → slash → changes →
+context → memory → sdd-plan → commands-auth → skills → subagents → mcp → hooks-deploy) + `context/` (`Claude-Code.resources.md` + `Claude-Code.build.md`),
+compiled from CampusX `Claude_Code_CampusX.pdf` (149 pages, 46 images reviewed; no PDF refs in notes per owner request).
+Bookkeeping stays in `.agents/`, out of the reading view.
 
 ## In flight
 
-Nothing. (WIP = 1: one track at a time. Git track done; next track unqueued.)
+Nothing. (WIP = 1: one track at a time. Git + Claude Code tracks done; next track unqueued.)
 
 ## Blocked
 
@@ -25,4 +29,4 @@ python3 .agents/bin/check.py
 
 ## Last green baseline
 
-`python3 .agents/bin/check.py` → [v2] 0 topics, VCR 1/1=1.00, 0 errors (2026-10-02). Dead keys: none.
+`python3 .agents/bin/check.py` → [learning-phase-obsidian v6] notes: 20 tracks: 2 singles: 0 VCR: 7/7=1.00, 0 errors (2026-10-02). Dead keys: none.
