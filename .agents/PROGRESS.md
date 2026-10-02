@@ -10,7 +10,7 @@ so the Obsidian graph shows real titles. Claude Code track live:
 `AI-Engineering/Claude-Code/Claude-Code.md` hub + `notes/` (12 notes: foundations → setup → slash → changes →
 context → memory → sdd-plan → commands-auth → skills → subagents → mcp → hooks-deploy) + `context/` (`Claude-Code.resources.md` + `Claude-Code.build.md`),
 compiled from CampusX `Claude_Code_CampusX.pdf` (149 pages, 46 images reviewed; no PDF refs in notes per owner request).
-Bookkeeping stays in `.agents/`, out of the reading view.
+Bookkeeping stays in `.agents/`, out of the reading view. Graph is star-shaped: folder-named domain hubs (`AI-Engineering/AI-Engineering.md`, `DevOps/DevOps.md`) link track hubs only; notes link hub + context; graph filter hides `.agents/`.
 
 ## In flight
 

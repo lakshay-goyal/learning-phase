@@ -26,6 +26,7 @@ git revert HEAD        # pushed damage (safe)
 ## 2. How it works
 
 - **Uncommitted edits.** Throw away file edits (`restore`), or unframe while keeping edits (`--staged`).
+
   ```bash
   git restore app.py               # desk back to last save (edits gone — careful)
   git restore -p                   # pick pieces interactively (safe way)
@@ -33,6 +34,7 @@ git revert HEAD        # pushed damage (safe)
   ```
 
 - **Last save, private.** Pick what to keep: everything, edits, or nothing. Wrong message only → `--amend`.
+
   ```bash
   git reset --soft HEAD~1    # undo save, keep framed + edited files
   git reset --mixed HEAD~1   # undo save, keep edited files, unframe all
@@ -40,12 +42,14 @@ git revert HEAD        # pushed damage (safe)
   ```
 
 - **Last save, already shared.** Never `reset` — add the antidote and push it.
+
   ```bash
   git revert HEAD
   git push
   ```
 
 - **Bad merge/rebase.** Mid-flight → abort. Just finished locally → jump back. Already pushed → antidote, not rewrite.
+
   ```bash
   git merge --abort              # mid-merge exit
   git rebase --abort             # mid-rebase exit
@@ -53,6 +57,7 @@ git revert HEAD        # pushed damage (safe)
   ```
 
 - **Park work to switch tasks.** `stash` shelves desk+frame with a label. Apply keeps a copy, pop applies + deletes.
+
   ```bash
   git stash push -m "wip: login half-done"
   git switch main                # go handle the urgent thing
@@ -61,6 +66,7 @@ git revert HEAD        # pushed damage (safe)
   ```
 
 - **Find which save broke it.** `bisect` (automatic binary search) needs a repeatable test — flaky tests blame innocent saves.
+
   ```bash
   git bisect start
   git bisect bad HEAD            # this version is broken
@@ -70,6 +76,7 @@ git revert HEAD        # pushed damage (safe)
   ```
 
 - **Resurrect deleted work.** Find the ID in the diary, grow a branch from it.
+
   ```bash
   git reflog -15
   git branch recovery abc1234
@@ -82,7 +89,7 @@ git revert HEAD        # pushed damage (safe)
 ```mermaid
 flowchart TD
   Q{Mistake where?} -->|desk edits| R1[git restore]
-  Q -->|framed| R2[restore --staged]
+  Q -->|framed| R2[unframe, keep edits]
   Q -->|local commit| R3[reset / amend]
   Q -->|pushed commit| R4[git revert]
   Q -->|need to park| R5[git stash]
@@ -109,26 +116,33 @@ Golden rule: pushed → only `revert` (add truth). Private → `reset`/`amend`/`
 ## 5. AI-era leverage
 
 - **Cage the agent:** park your edits before it touches the tree, restore after.
+
   ```bash
   git stash push -m "mine, before agent"
   # ... agent works ...
   git stash pop
   ```
+
   ```text
   Ask AI: "Work only in new untracked files. Do not modify tracked files — confirm with git status before finishing."
   ```
+
 - **Hunt agent-caused regressions** without reading 50 saves: `bisect run` + the failing test names the guilty save.
 
 ## 6. Limits & tradeoffs
 
 - `restore` / `reset --hard` destroy unsaved work permanently. Instead: commit or stash first — there is no undo for the undo.
+
   ```bash
   git stash push -m "safety"   # 5 seconds that saves hours
   ```
+
 - `reflog` expires (~90 days) and is local only — server-side rewrites need hosting-side recovery, not reflog.
+
 - `bisect` is only as good as your good/bad markers + a deterministic test. Wrong markers send the search the wrong way.
+
 - Next: permanent markers in [[06-Tags-Worktrees-Internals|06 Tags & Internals]]; combining context in [[04-Merge-Rebase|04 Merge & Rebase]]. Sources in [[../context/Git.resources]]; proof in [[../context/Git.build]].
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[02-Commits-History|02 Commits]] · [[04-Merge-Rebase|04 Merge]] · [[06-Tags-Worktrees-Internals|06 Internals]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[../context/Git.resources]] · [[../context/Git.build]]

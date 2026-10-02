@@ -26,6 +26,7 @@ git push -u origin feature-login  # copy to GitHub; -u links yours to theirs (up
 ## 2. How it works
 
 - **Branches are just labels.** Creating/deleting moves the label, never the saves (deleted labels are recoverable).
+
   ```bash
   git branch                    # list labels (* = where HEAD points)
   git switch -c my-feature      # create + move HEAD onto it
@@ -34,6 +35,7 @@ git push -u origin feature-login  # copy to GitHub; -u links yours to theirs (up
   ```
 
 - **Know where you are.** `HEAD` (current position) plus shortcuts for "N steps back".
+
   ```bash
   git status -sb                # shows branch + ahead/behind the backup
   git switch main               # move HEAD to main
@@ -41,28 +43,33 @@ git push -u origin feature-login  # copy to GitHub; -u links yours to theirs (up
   ```
 
 - **Link yours to theirs (upstream).** Upstream (the tracked pair: your branch ↔ their branch) lets `pull`/`push` work with no extra typing.
+
   ```bash
   git push -u origin my-feature
   git branch -vv                 # shows every branch + its upstream + ahead/behind
   ```
 
 - **Three copies, don't mix them up.** Your `main` (yours) vs `origin/main` (their last-seen state, frozen until you check) vs their actual `main` online. Most sync mistakes come from trusting the frozen photo.
+
   ```bash
   git fetch --prune             # refresh all frozen photos (safe — touches nothing of yours)
   git log --oneline main..origin/main   # what's new over there that you lack?
   ```
 
 - **`fetch` = safe look.** Downloads + updates photos. Never conflicts, never touches your work.
+
   ```bash
   git fetch --all --prune
   ```
 
 - **`pull` = look + combine.** `pull` fetches then merges into you. It can conflict — `fetch` cannot.
+
   ```bash
   git pull --rebase              # replay your saves on top of theirs (cleaner for features)
   ```
 
 - **`push` = send yours over.** Rejected means someone moved first — look, combine, retry. Force-rewrite their label only with the safe flag, and only after telling the team.
+
   ```bash
   git push origin my-feature
   git push --force-with-lease    # rewrite only if nobody else pushed since (safe force)
@@ -78,7 +85,7 @@ flowchart LR
     H[HEAD -> feature] --> F[feature abc123]
     M[main def456]
     O1[origin/main def456<br/>frozen photo]
-    O2[origin/feature ---<br/>stale until fetch]
+    O2[origin/feature stale until fetch]
   end
   subgraph Remote GitHub
     R1[main def456]
@@ -105,14 +112,18 @@ Sync loop: `fetch` → `log --oneline main..origin/main` (what's new?) → `pull
 ## 5. AI-era leverage
 
 - **One branch per agent task** — the agent's mess stays caged, review is one diff.
+
   ```bash
   git switch -c agent-task-1
   git diff main...agent-task-1 --stat   # what did the agent actually touch?
   ```
+
   ```text
   Ask AI: "My branch is agent-task-1 off main. List every file you changed and why, in 5 bullets."
   ```
+
 - **10-second audit** — agents leave stray branches and half-detached states.
+
   ```bash
   git branch -vv && git status -sb
   ```
@@ -120,13 +131,17 @@ Sync loop: `fetch` → `log --oneline main..origin/main` (what's new?) → `pull
 ## 6. Limits & tradeoffs
 
 - Plain `pull` merges by default (adds merge bubbles to history). Teams often prefer `pull --rebase` on features, merge on `main`. Check your repo's rule first.
+
 - `origin/main` is stale by design — never trust it without a fresh `fetch`.
+
   ```bash
   git fetch --prune && git log --oneline main..origin/main
   ```
+
 - Force-push rewrites shared truth — `--force-with-lease` (fails if someone else pushed) is the only acceptable kind on shared repos.
+
 - Next: combining branches in [[04-Merge-Rebase|04 Merge & Rebase]]; fixing sync mistakes in [[05-Undo-Recovery|05 Undo & Recovery]]. Sources in [[../context/Git.resources]]; proof in [[../context/Git.build]].
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[02-Commits-History|02 Commits]] · [[04-Merge-Rebase|04 Merge]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[../context/Git.resources]] · [[../context/Git.build]]

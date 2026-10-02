@@ -47,4 +47,4 @@ flowchart LR
 
 ## Related
 
-- [[DevOps|DevOps MOC]] · [[context/Git.resources]] · [[context/Git.build]]
+- [[../DevOps|DevOps]] · [[context/Git.resources]] · [[context/Git.build]]

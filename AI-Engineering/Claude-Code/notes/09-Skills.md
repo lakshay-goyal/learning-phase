@@ -3,7 +3,7 @@ topic: Skills Guide
 domain: AI-Engineering
 status: researched
 updated: 2026-10-02
-related: ["[[../Claude-Code]]", "[[08-Custom-Slash-Commands-Auth|Commands]]"]
+related: ["[[../Claude-Code]]"]
 tags: [claude-code, skills, progressive-disclosure, skill-creator]
 ---
 
@@ -24,45 +24,42 @@ ls .claude/skills/frontend-design/SKILL.md
 
 ## 2. How it works
 
-- **Why prompts fail** — retype each time; 20k tokens always burn; can't attach PDFs/scripts; no version/share; 3-in-1 confuses model.
+### Problem + shape
+
+- **Prompts don't scale** — retyped each time, 20k tokens always burn, no bundling, sharing, or composing.
+
   ```text
   Long prompt every time = 20k tokens burned always
   # expected output: slow + costly vs skill loads on need
   ```
-- **Folder** — `ppt-generator/SKILL.md` (must) + `scripts/` (code) + `resources/` (refs) + `assets/` (templates/fonts). Only SKILL.md required.
+
+- **Folder + frontmatter** — `SKILL.md` required (`name` id + `description` trigger); scripts/resources/assets optional.
+
   ```bash
   mkdir -p .claude/skills/ppt-generator/scripts
   # expected output: skill skeleton ready
   ```
-- **SKILL.md 2 parts** — frontmatter `name` (id) + `description` (when to fire, most vital); body steps, patterns, pitfalls, links like `[Run plot.py](./scripts/plot.py)`.
-  ```markdown
-  ---
-  name: docx
-  description: Use when making .docx with company style
-  ---
-  # expected output: triggers only on that intent
-  ```
-- **Levels** — L1 all descriptions at start (~10 lines); L2 full body on match; L3 scripts/templates when body points. 10 skills = 10 lines until needed.
+
+### Loading + making
+
+- **Three levels** — L1 descriptions always in context, L2 body on intent match, L3 files when body links them.
+
   ```text
   Successfully loaded skill: frontend-design
   # expected output: confirms L2 loaded
   ```
-- **Scopes** — personal `~/.claude/skills/` (all projects) vs project `<repo>/.claude/skills/` (team, git). Don't trust random community (key leaks); prefer official repo.
-  ```bash
-  ls ~/.claude/skills/
-  # expected output: your personal packs
-  ```
-- **Make it** — manual folder+MD (ok but hard); skill-creator (recommended: + → Skills → creator → 3 Qs: do/trigger/done → copy to skill path); install community (risky). Test + iterate 4-5x. Restart to use (`claude -r`).
+
+- **Personal vs project + creator** — `~/.claude` follows you, repo skills follow the team; skill-creator interviews, iterate 4–5x, restart.
+
   ```bash
   claude -r
   # expected output: new skill listed under /
   ```
-- **Profile demo** — no-skill: big Category card, default fonts, large cards. With frontend-design: merged table, better type, compact. Plan: baseline → skill → rebuild → compare.
-  ```text
-  /frontend-design Build profile page per theme
-  # expected output: tighter layout per skill rules
-  ```
-- **Merger** — commands merged into skills. Type `/` sees all. Old `.claude/commands/` retiring. Auto (Claude picks) vs manual (you type). Stop auto: `disable-model-invocation: true`.
+
+### Proof + rules
+
+- **Demo + merger** — same model, visibly better page with the skill; commands merged into skills, `disable-model-invocation` gates auto-fire.
+
   ```markdown
   ---
   disable-model-invocation: true
@@ -79,10 +76,10 @@ flowchart LR
   A[L1: 10 descriptions] --> B{Intent matches?}
   B -->|yes| C[L2: body loads]
   C --> D[L3: scripts/templates on link]
-  D --> E[Compose: pdf->tables->ppt chain]
+  D --> E[Compose: pdf to tables to ppt]
 ```
 
-PDF tables: PPT gap, 5 prompt fails, prompts vs skills, folder contents, 3 levels, personal vs project, fixes, profile diff, command vs skill triggers.
+Also tabulated: PPT gap, 5 prompt fails, prompts vs skills, folder contents, 3 levels, personal vs project, fixes, profile diff, command vs skill triggers.
 
 ## 4. Use cases
 
@@ -96,10 +93,13 @@ PDF tables: PPT gap, 5 prompt fails, prompts vs skills, folder contents, 3 level
 ## 5. AI-era leverage
 
 - **Skill drafter:** answer 3 Qs fast.
+
   ```text
   Ask AI: "Draft SKILL.md for <task>. Ask me: what it does, when to trigger, what done looks like. Then output frontmatter + 5 steps."
   ```
+
 - **Share pack:** version team knowledge.
+
   ```text
   Ask AI: "List files for ppt-generator skill: SKILL.md + 1 script + 1 template. Give mkdir + git add commands."
   ```
@@ -107,10 +107,13 @@ PDF tables: PPT gap, 5 prompt fails, prompts vs skills, folder contents, 3 level
 ## 6. Limits & tradeoffs
 
 - 4-5 iterations to solid — breaks as: first draft flaky — instead do: test on real prompts, refine.
+
 - Untrusted skills leak keys — breaks as: random install steals env — instead do: read SKILL.md + scripts first.
+
 - Body stays in context after load — breaks as: long body = recurring cost — instead do: concise steps, link details to L3.
-- Open aspects: distribute via [[12-Hooks-Plugins-Deploy|12 Plugins]]; isolate via [[10-Subagents|10 Subagents]].
+
+- Open aspects: distribute via [[13-Hooks-Plugins-Deploy|13 Plugins]]; isolate via [[10-Subagents|10 Subagents]].
 
 ## 7. Related
 
-- [[../Claude-Code|Claude Code hub]] · [[08-Custom-Slash-Commands-Auth|08 Commands]] · [[10-Subagents|10 Subagents]] · [[../context/Claude-Code.resources]] · [[../context/Claude-Code.build]]
+- [[../Claude-Code|Claude Code hub]] · [[../context/Claude-Code.resources]] · [[../context/Claude-Code.build]]

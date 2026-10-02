@@ -3,7 +3,7 @@ topic: Foundations Vibe vs Agentic
 domain: AI-Engineering
 status: researched
 updated: 2026-10-02
-related: ["[[../Claude-Code]]", "[[07-Spec-Driven-Plan-Mode|SDD + Plan Mode]]"]
+related: ["[[../Claude-Code]]"]
 tags: [claude-code, vibe-coding, agentic-coding, anthropic, foundations]
 ---
 
@@ -24,39 +24,42 @@ claude --help
 
 ## 2. How it works
 
-- **What Claude Code is** — terminal tool from Anthropic (company behind Claude). Reads codebase, writes code, debugs, refactors, deploys.
+### Two styles
+
+- **Vibe coding** — plain wish in, full app out, fix-loop till it looks right; great for MVPs, fails where money is on the line.
+
+  ```text
+  Prompt: "Create a to-do list website for me"
+  # expected output: full website code, then a bug-fix loop
+  ```
+
+- **Agentic coding** — you pilot with specs and reviews while AI executes; from manual coder to architect at ~10x output.
+
+  ```text
+  Vibe: passenger, AI drives blindly. Agentic: pilot + skilled co-pilot.
+  ```
+
+### The tool
+
+- **Claude Code** — Anthropic's terminal partner: reads your whole repo, then writes, debugs, refactors, and deploys.
+
   ```bash
   claude
   # expected output: trust prompt + login, then chat inside project folder
   ```
-- **Vibe coding 3 steps** — plain prompt → AI makes full app → you test → repeat until it feels right.
-  ```text
-  Prompt: "Create a to-do list website for me"
-  # expected output: full website code, then bug-fix loop
-  ```
-- **Where vibe works vs fails** — MVPs, prototypes, hackathons = fine. Scalable systems, banking, critical infra = fails.
-  ```text
-  Low stakes: MVP + prototype + hackathon -> vibe OK
-  High stakes: money on the line -> vibe fails
-  ```
-- **Agentic coding rule** — you keep tech understanding, give specific orders, review architecture.
-  ```text
-  Vibe: passenger, AI drives blindly. Agentic: pilot + skilled co-pilot.
-  ```
-- **Why Claude Code wins (5 reasons)** — best raw coding (Opus), huge context, great refactor/architecture, parallel agents, senior-engineer behaviour.
+
+- **Why it wins** — sharpest raw coding (Opus), huge context, best refactors, parallel agents, senior judgment.
+
   ```bash
   /model
   # expected output: pick opus-4-6 / sonnet-4-6 / haiku-4-5
   ```
-- **Spendly project** — expense tracker used all course: landing + register/login, dashboard stats, date filter, CRUD (create/read/update/delete), charts.
+
+- **Spendly** — the course expense tracker: landing, auth, dashboard stats, filters, full CRUD, charts.
+
   ```bash
   ls app.py templates/ static/ database/
   # expected output: Flask files listed (proves starter present)
-  ```
-- **Role shift** — before: manual coder limited by typing. After: architect giving orders, 10x output.
-  ```bash
-  git log --oneline -3
-  # expected output: your commits on top (proves you track AI work)
   ```
 
 > You can now: pick vibe for a prototype and agentic for production without hesitation.
@@ -65,12 +68,12 @@ claude --help
 
 ```mermaid
 flowchart LR
-  A[Manual: type every line] --> B[Vibe: prompt -> full app -> fix loop]
-  B --> C[Agentic: spec -> pilot orders -> review -> ship]
+  A[Manual: type every line] --> B[Vibe: prompt, full app, fix loop]
+  B --> C[Agentic: spec, pilot orders, review, ship]
   C --> D[Spendly: landing + auth + CRUD + charts + deploy]
 ```
 
-Before/after art in PDF: tired solo dev at 3 monitors → smiling pilot directing 4 robots (Feature A, Refactoring, Testing, Docs, Security Scan).
+Before/after art: tired solo dev at 3 monitors → smiling pilot directing 4 robots (Feature A, Refactoring, Testing, Docs, Security Scan).
 
 ## 4. Use cases
 
@@ -84,10 +87,13 @@ Before/after art in PDF: tired solo dev at 3 monitors → smiling pilot directin
 ## 5. AI-era leverage
 
 - **Manager pitch:** explain shift to product-manager role with cost line.
+
   ```text
   Ask AI: "Turn these 5 Claude Code advantages into a 5-line manager pitch with one 10x example."
   ```
+
 - **Project picker:** decide vibe vs agentic for your idea.
+
   ```text
   Ask AI: "My idea is <one line>. Is it low-stakes prototype or high-stakes system? Recommend vibe or SDD + why in 3 bullets."
   ```
@@ -95,10 +101,13 @@ Before/after art in PDF: tired solo dev at 3 monitors → smiling pilot directin
 ## 6. Limits & tradeoffs
 
 - Vibe is fast to first screen, slow to correct system — breaks as hidden choices pile up — instead do: SDD spec + plan for anything with users/money.
+
 - Claude Code needs basics — breaks as: no Python/Flask/HTML/Git means you cannot review AI output — instead do: crash-course Git first.
+
 - Fear of replacement — breaks as: avoiding tools while peers ship 10x — instead do: one guided feature to see you move up the value chain.
+
 - Open aspects: install in [[02-Setup-Bash-Git-Ollama|02 Setup]]; full SDD in [[07-Spec-Driven-Plan-Mode|07 SDD + Plan]]; detail sources in [[../context/Claude-Code.resources]]; proof in [[../context/Claude-Code.build]].
 
 ## 7. Related
 
-- [[../Claude-Code|Claude Code hub]] · [[02-Setup-Bash-Git-Ollama|02 Setup]] · [[07-Spec-Driven-Plan-Mode|07 SDD + Plan]] · [[../context/Claude-Code.resources]] · [[../context/Claude-Code.build]]
+- [[../Claude-Code|Claude Code hub]] · [[../context/Claude-Code.resources]] · [[../context/Claude-Code.build]]

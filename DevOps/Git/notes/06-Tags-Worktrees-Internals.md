@@ -26,6 +26,7 @@ git worktree list                      # you should see both desks
 ## 2. How it works
 
 - **Tags.** Plain tags are bare pointers; annotated tags are real objects (message + date + can be signed). Rule: tag releases, never move a published tag.
+
   ```bash
   git tag -a v2.0.0 -m "release"   # annotated (use this for releases)
   git show v2.0.0 --stat           # what did this release contain?
@@ -34,6 +35,7 @@ git worktree list                      # you should see both desks
   ```
 
 - **Worktrees.** One branch per desk. Best way to run two tasks (or two agents) in parallel.
+
   ```bash
   git worktree add ../feature-a feature-a
   git worktree list
@@ -41,6 +43,7 @@ git worktree list                      # you should see both desks
   ```
 
 - **Objects (what's really stored).** Blobs (files), trees (folders), commits (snapshots), tags (stickers). Peek with plumbing commands; daily work stays with the friendly ones.
+
   ```bash
   git cat-file -p HEAD      # pretty-print the newest save object
   git ls-tree HEAD           # what folders/files does it list?
@@ -48,29 +51,34 @@ git worktree list                      # you should see both desks
   ```
 
 - **Refs (the sticky notes).** Branches, remote photos, stickers — all just names pointing at IDs.
+
   ```bash
   git show-ref | head -5          # every name → ID mapping
   git rev-parse main              # what save does "main" mean right now?
   ```
 
 - **Hooks (automatic doorbells).** Scripts in `.git/hooks/` that run on commit/push. A failing check (non-zero exit) blocks the action. Note: they don't travel when someone clones — share them via docs/templates.
+
   ```bash
   ls .git/hooks/                  # sample scripts live here
   # make .git/hooks/pre-commit executable that runs your linter — bad code can't even save
   ```
 
 - **Submodule vs subtree (repo inside a repo).** Submodule = nested repo pinned at one save (parent doesn't auto-follow its updates). Subtree = merged copy with one shared history (heavier). Small stable snippet → plain copy beats both.
+
   ```bash
   git submodule add https://github.com/org/lib.git vendor/lib
   git submodule update --init      # teammate just cloned? run this to fill vendor/
   ```
 
 - **Signing + logins.** SSH vs HTTPS links, tokens, and signing (proving *you* wrote it — not that it's correct).
+
   ```bash
   git log --show-signature -3      # which saves carry a valid signature?
   ```
 
 - **Big files (LFS).** Normal Git keeps every version forever — photos/videos/models bloat it. LFS (Large File Storage — pointers in Git, real bytes on a side server) fixes that.
+
   ```bash
   git lfs install
   git lfs track "*.psd"
@@ -90,7 +98,7 @@ flowchart TB
   BR[refs/heads/main] --> C
   TG[refs/tags/v1.0] --> C
   H[HEAD -> main] -.-> BR
-  W2[worktree ../hotfix<br/>HEAD -> hotfix] -. shares objects .-> C
+  W2[hotfix worktree, HEAD on hotfix] -. shares objects .-> C
   style C fill:#ecfdf5,stroke:#059669
   style TG fill:#fef3c7,stroke:#d97706
 ```
@@ -112,25 +120,32 @@ One model: everything is fingerprint-addressed content; refs are human names sli
 ## 5. AI-era leverage
 
 - **Agents × worktrees = parallel throughput:** each agent caged in its own desk, no stash dance.
+
   ```bash
   git worktree add ../agent-a feature-a
   git worktree add ../agent-b feature-b
   ```
+
   ```text
   Ask AI: "Work only inside ../agent-a on branch feature-a. Never touch the main folder. Finish with git diff --stat."
   ```
+
 - **Agent guardrails:** a `pre-commit` hook runs lint/typecheck even when the agent "forgets."
 
 ## 6. Limits & tradeoffs
 
 - Tags don't move — re-tagging a published version breaks everyone who fetched the old sticker. Instead: new version number, new tag.
+
 - Desks share stored objects but not unsaved work — edits can't teleport between desks without stash/commit.
+
   ```bash
   git stash push -m "move me"   # carry work desk → desk via stash
   ```
+
 - Hooks are local-only; submodules add real mental load (detached nests, two-step saves). Prefer the simplest mechanism your team will actually maintain.
+
 - Next: drive hosting from the shell — [[07-GitHub-CLI|07 GitHub CLI]] then [[08-GitLab-CLI-Automation|08 GitLab CLI]]. Sources in [[../context/Git.resources]]; proof in [[../context/Git.build]].
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[05-Undo-Recovery|05 Undo]] · [[07-GitHub-CLI|07 gh]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[../context/Git.resources]] · [[../context/Git.build]]

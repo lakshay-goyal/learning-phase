@@ -80,10 +80,10 @@ Frontmatter `status: researched`. Never `human-reviewed`.
 result `pass` only if gate passed. (Legacy per-subtopic receipts stay untouched until that track migrates.)
 2. One row per subtopic + one track row in `.agents/index.md`, one
 `## [YYYY-MM-DD] research | Topic | path` line per subtopic in `.agents/log.md`,
-update `<Domain>/_MOC.md`, set feature back to `blocked`/`done` with evidence paths.
+update `<Domain>/<Domain>.md` (create it when the domain's first track lands), set feature back to `blocked`/`done` with evidence paths.
 2. One row per subtopic + one track row in `.agents/index.md`, one
 `## [YYYY-MM-DD] research | Topic | path` line per subtopic in `.agents/log.md`,
-update `<Domain>/_MOC.md`, set feature back to `blocked`/`done` with evidence paths.
+update `<Domain>/<Domain>.md` (create it when the domain's first track lands), set feature back to `blocked`/`done` with evidence paths.
 3. Run `python3 .agents/bin/check.py` (default gate) then optionally `--probe` for live
 URL warnings. Report: opened vs UNVERIFIED, repos inspected vs NOT INSPECTED, limits.
 4. Suggest `verify-topic` for an independent check — do not self-certify quality.

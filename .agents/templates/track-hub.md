@@ -34,4 +34,4 @@ One diagram: the learning path through every subtopic in order. Labels = subtopi
 
 ## Related
 
-- [[../_MOC|Domain MOC]]
+- [[../<Domain>|Domain hub]]

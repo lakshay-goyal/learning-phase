@@ -26,6 +26,7 @@ git cherry-pick abc1234                     # copy one save here
 ## 2. How it works
 
 - **Merge.** Run it on the branch that should receive the work. Never merge with unsaved edits lying around.
+
   ```bash
   git switch main
   git merge feature            # fast-forward if possible, knot if diverged
@@ -33,6 +34,7 @@ git cherry-pick abc1234                     # copy one save here
   ```
 
 - **Conflicts look like this.** Markers show both versions. Fix the file, frame it, finish.
+
   ```bash
   git status                   # lists files with conflicts
   # edit the file: keep yours, theirs, or a mix; delete the <<<<< ===== >>>>> lines
@@ -42,6 +44,7 @@ git cherry-pick abc1234                     # copy one save here
   ```
 
 - **Rebase (private branches only).** Replays your saves onto a new base. Never rebase shared `main` — every teammate's copy desyncs.
+
   ```bash
   git switch feature
   git rebase main
@@ -50,23 +53,27 @@ git cherry-pick abc1234                     # copy one save here
   ```
 
 - **Clean up with interactive rebase.** Rewrite messages, squash (fold many saves into one), drop, reorder.
+
   ```bash
   git rebase -i HEAD~3
   # in the editor: pick / reword / squash / fixup / drop — then save and exit
   ```
 
 - **Cherry-pick (copy one save).** Result is a new fingerprint (same change, new parent).
+
   ```bash
   git cherry-pick abc1234
   git cherry-pick --no-commit abc1234 def5678   # stage several, commit once yourself
   ```
 
 - **After any rewrite, push safely.** Rewritten fingerprints need a force-push — the safe kind only, after telling the team.
+
   ```bash
   git push --force-with-lease
   ```
 
 - **Safety nets.** Every dangerous op leaves a way back.
+
   ```bash
   git reset --hard ORIG_HEAD   # ORIG_HEAD = position before the last merge/rebase
   git reflog -5                # find the pre-op save if ORIG_HEAD is gone
@@ -107,14 +114,18 @@ Decision tree: shared branch? → merge. Private + messy? → interactive rebase
 ## 5. AI-era leverage
 
 - **Agents leave 15 micro-saves** — squash into 2 reviewable ones.
+
   ```bash
   git rebase -i HEAD~15
   git diff main...feature --stat   # prove the cleanup didn't drop code
   ```
+
   ```text
   Ask AI: "These 15 commits do 2 things. Propose which to squash together and write the 2 final messages."
   ```
+
 - **Find what still needs a human:** only conflicted files need judgment, the rest auto-merged.
+
   ```bash
   git diff --name-only --diff-filter=U   # exactly the files needing you
   ```
@@ -122,10 +133,13 @@ Decision tree: shared branch? → merge. Private + messy? → interactive rebase
 ## 6. Limits & tradeoffs
 
 - Rebase rewrites fingerprints — every downstream copy desyncs until force-pushed + re-pulled. Coordinate first; prefer merge on shared lines.
+
 - `ours`/`theirs` swap meaning between merge and rebase — the #1 cause of wrong-side fixes. When unsure: `git status` + `git diff` before `add`.
+
 - Cherry-picks duplicate (same change, two fingerprints) — future merges can conflict with themselves. Prefer flowing the branch over copying saves when possible.
+
 - Next: undoing any of this in [[05-Undo-Recovery|05 Undo & Recovery]]; what's under the hood in [[06-Tags-Worktrees-Internals|06 Internals]]. Sources in [[../context/Git.resources]]; proof in [[../context/Git.build]].
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[03-Branches-Remotes|03 Branches]] · [[05-Undo-Recovery|05 Undo]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[../context/Git.resources]] · [[../context/Git.build]]

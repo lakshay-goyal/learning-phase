@@ -25,9 +25,10 @@ Example shape (replace with real content):
 
 ## 2. How it works
 
-_5–8 bullets max. One idea per bullet, 1–2 lines each. Rule: snippet beats paragraph — every bullet that describes a mechanism gets a minimal runnable example right under it. No jargon dumps; define terms inline._
+_5–7 bullets max, grouped under `###` mini-headings. One idea per bullet, ONE short line. Rule: snippet beats paragraph — every bullet that describes a mechanism gets a minimal runnable example right under it. No jargon dumps; define terms inline. Never repeat one concept in two bullets. Format: blank line between bullets and around snippets; each bullet = **Bold label** + one short line (never keywords alone, never a paragraph)._
 
-- **<Plain name for step/concept>** — 1 line in simple words.
+- **<Plain name for step/concept>** — 1–2 plain sentences saying what it is and why it matters.
+
   ```bash
   <minimal command / code, 1–5 lines>
   # expected output: <1 line>
@@ -68,6 +69,6 @@ _3–5 bullets max. Each: plain-word limit + what breaks + what to do instead (w
 
 ## 7. Related
 
-_In a track (file lives at `notes/<Slug>.md`): link the hub + `[[../context/<Track>.resources]]` + `[[../context/<Track>.build]]` + ≤4 sibling notes as `[[<Slug>|Title]]` (must match frontmatter `related`). Single topic: link `[[../_MOC|Domain MOC]]` + `[[resources]]` + `[[build]]` + ≤4 notes._
+_In a track (file lives at `notes/<Slug>.md`): link the hub + `[[../context/<Track>.resources]]` + `[[../context/<Track>.build]]`, and by default NO sibling notes (hub-and-spoke keeps the graph star-shaped; add ≤4 siblings only if the reader must traverse them, and mirror them in frontmatter `related`). Single topic: link the folder-named domain hub `[[../<Domain>|Domain]]` + `[[resources]]` + `[[build]]` + ≤4 notes._
 
 - …

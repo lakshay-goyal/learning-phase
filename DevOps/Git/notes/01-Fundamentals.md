@@ -28,12 +28,14 @@ git log --oneline -3      # you should see your commit at the top
 ## 2. How it works
 
 - **Git vs hosting.** Git runs on your machine and saves history. GitHub/GitLab are websites for sharing + reviews. `gh`/`glab` (terminal tools for those sites) never replace `git`.
+
   ```bash
   git --version             # Git itself
   gh --version              # GitHub's terminal tool (needs separate install)
   ```
 
 - **The three steps.** Edit files → `git add` (desk → frame) → `git commit` (frame → album).
+
   ```bash
   echo "fix" >> app.py
   git status --short       # you should see:  M app.py (modified, not framed yet)
@@ -44,18 +46,21 @@ git log --oneline -3      # you should see your commit at the top
   ```
 
 - **Check before you save.** `git diff` shows desk-vs-frame. `git diff --staged` shows frame-vs-last-save.
+
   ```bash
   git diff                  # what you edited but didn't frame yet
   git diff --staged         # what is framed and will go into the next save
   ```
 
 - **Look at past saves.** `git log` lists saves. `git show` opens one save fully.
+
   ```bash
   git log --oneline -5      # last 5 saves, one line each
   git show HEAD --stat      # what the newest save changed
   ```
 
 - **Tell Git who you are.** Every save stores your name + email. Wrong email = your work shows as "unknown" on GitHub.
+
   ```bash
   git config --global user.name "Your Name"
   git config --global user.email "you@example.com"
@@ -63,17 +68,20 @@ git log --oneline -3      # you should see your commit at the top
   ```
 
 - **Settings have layers.** Machine < your account < this project < one-time flag. Project wins.
+
   ```bash
   git config --list --show-origin   # shows every setting + which file it came from
   ```
 
 - **New project vs joining one.** `git init` starts history here. `git clone <url>` copies someone's full history + sets up the backup link.
+
   ```bash
   git init my-app && cd my-app        # start fresh
   git clone https://github.com/org/repo.git   # join existing
   ```
 
 - **Skip junk files.** `.gitignore` lists files Git should never track (passwords, `node_modules/`). It cannot ignore files you already saved — untrack those first.
+
   ```bash
   echo ".env" >> .gitignore
   echo "node_modules/" >> .gitignore
@@ -82,6 +90,7 @@ git log --oneline -3      # you should see your commit at the top
   ```
 
 - **Shortcuts.** Aliases save typing for commands you run 50× a day.
+
   ```bash
   git config --global alias.st status
   git config --global alias.lg "log --oneline --graph --decorate -10"
@@ -119,13 +128,17 @@ Daily loop to memorize: `status` → `add -p` → `diff --staged` → `commit` �
 ## 5. AI-era leverage
 
 - **Before giving code to an AI agent:** save the clean state so bad output is one undo away.
+
   ```bash
   git status --short && git commit -am "checkpoint before agent"
   ```
+
   ```text
   Ask AI: "My working tree is clean at this commit. Change only app.py's login function, then show me git diff."
   ```
+
 - **After agent output:** check size first, content second — agents mix refactors into fixes.
+
   ```bash
   git diff --stat && git diff
   ```
@@ -133,13 +146,17 @@ Daily loop to memorize: `status` → `add -p` → `diff --staged` → `commit` �
 ## 6. Limits & tradeoffs
 
 - Git is great for text, bad for big binaries (photos, videos, model weights) — every version is kept forever. Instead: keep them in LFS (see 06).
+
   ```bash
   git lfs track "*.psd"   # preview of the fix, full steps in 06
   ```
+
 - `commit -a` skips the frame (saves all tracked edits at once). Fast but can bundle unrelated edits by accident — instead use `add -p` when files hold mixed work.
+
 - Saves are local until pushed — unpushed work dies with your disk. Push daily.
+
 - Open aspects: what a commit really contains lives in [[02-Commits-History|02 Commits & History]]; sharing work in [[03-Branches-Remotes|03 Branches & Remotes]]. Detail sources in [[../context/Git.resources]]; proof in [[../context/Git.build]].
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[02-Commits-History|02 Commits]] · [[03-Branches-Remotes|03 Branches]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[../context/Git.resources]] · [[../context/Git.build]]

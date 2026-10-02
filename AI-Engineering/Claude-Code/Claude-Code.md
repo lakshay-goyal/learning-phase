@@ -23,13 +23,14 @@ flowchart LR
   G --> H[08 Custom Commands]
   H --> I[09 Skills]
   I --> J[10 Subagents]
-  J --> K[11 MCP]
-  K --> L[12 Hooks Plugins Deploy]
+  J --> K[11 Custom Subagents]
+  K --> L[12 MCP]
+  L --> M[13 Hooks Deploy]
 ```
 
 ## How to use this track
 
-1. Go in order `01 → 12`, 15–30 min per note. Each builds on the last. Demo app throughout is Spendly (Flask expense tracker).
+1. Go in order `01 → 13`, 15–30 min per note. Each builds on the last. Demo app throughout is Spendly (Flask expense tracker).
 2. Each note is learn-with-snippets; `context/Claude-Code.resources.md` goes deeper (beyond-scope only); `context/Claude-Code.build.md` proves it with mini-projects.
 3. After each note you can: run one new real command (see table).
 
@@ -46,10 +47,11 @@ flowchart LR
 | 07 | [[notes/07-Spec-Driven-Plan-Mode|SDD + Plan Mode]] | Spec anatomy, tech design, 15-step workflow, plan/ultraplan — you can ship DB setup right |
 | 08 | [[notes/08-Custom-Slash-Commands-Auth|Custom Commands & Auth]] | seed-user, seed-expense $ARGUMENTS, create-spec, register/login — you can automate repeats |
 | 09 | [[notes/09-Skills|Skills]] | SKILL.md, progressive disclosure, skill-creator, merger — you can pack expertise |
-| 10 | [[notes/10-Subagents|Subagents]] | Statelessness, math, custom agents, test + review pipelines — you can parallelize safely |
-| 11 | [[notes/11-MCP-Integrations|MCP Integrations]] | SQLite/Figma/GitHub, top 10, minimal setup — you can plug outside tools in |
-| 12 | [[notes/12-Hooks-Plugins-Deploy|Hooks, Plugins, Deploy]] | Harness, 7 hook uses, exit codes, plugin.json, Railway — you can enforce + distribute + deploy |
+| 10 | [[notes/10-Subagents|Subagents]] | Statelessness, math, advantages, built-ins — you can explain why helpers exist |
+| 11 | [[notes/11-Custom-Subagents|Custom Subagents]] | Permissions, anatomy, test + review pipelines — you can design team specialists |
+| 12 | [[notes/12-MCP-Integrations|MCP Integrations]] | SQLite/Figma/GitHub, top 10, minimal setup — you can plug outside tools in |
+| 13 | [[notes/13-Hooks-Plugins-Deploy|Hooks, Plugins, Deploy]] | Harness, 7 hook uses, exit codes, plugin.json, Railway — you can enforce + distribute + deploy |
 
 ## Related
 
-- [[AI-Engineering/_MOC|AI-Engineering MOC]] · [[context/Claude-Code.resources]] · [[context/Claude-Code.build]]
+- [[../AI-Engineering|AI-Engineering]] · [[context/Claude-Code.resources]] · [[context/Claude-Code.build]]

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-10-02",
-  "note": "Top-level domains. Folders must match an id (spaces become hyphens). Add a domain only with a <Domain>/_MOC.md.",
+  "note": "Top-level domains. Folders must match an id (spaces become hyphens). A populated domain gets a folder-named hub <Domain>/<Domain>.md linking its track hubs + sibling domain hubs.",
   "domains": [
     {
       "id": "AI-Engineering",

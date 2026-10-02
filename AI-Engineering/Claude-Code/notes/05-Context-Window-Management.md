@@ -3,7 +3,7 @@ topic: Context Window Management
 domain: AI-Engineering
 status: researched
 updated: 2026-10-02
-related: ["[[../Claude-Code]]", "[[10-Subagents|Subagents]]"]
+related: ["[[../Claude-Code]]"]
 tags: [claude-code, context-window, tokens, compact, subagents]
 ---
 
@@ -24,41 +24,60 @@ LLMs (text predictors with no memory) forget unless app resends history. Long ch
 
 ## 2. How it works
 
-- **Facts** — ~200k Sonnet, ~1M Opus 4.6. Fresh per session. Inputs (your text + code + images) + outputs (answers + tool logs) both burn. Replies cost ~6x your words.
+### Costs
+
+- **Sizes + resend math** — Sonnet ~200k, Opus 4.6 ~1M, fresh every session; each turn resends all history (10×200 tokens = 11,000, not 2,000).
+
   ```text
   /context -> 120k/150k usable -> quality dips
   # expected output: warning zone 120-130k
   ```
-- **Quadratic math** — each turn n resends all before. 10 turns × 200 tokens = 11,000 not 2,000. Formula n(n+1)/2 × b.
+
+- **Replies dominate** — your orders are short, Claude's answers ~6x; sharp prompts shrink replies more than typing less.
+
   ```text
-  40-turn mega (4 feats): 820 units. 4x10-turn fresh: 220 units. Save ~73%.
-  # expected output: 4x cheaper + cleaner focus
+  Vague prompt -> 2000-token exploring answer. Sharp @ prompt -> 200-token patch.
+  # expected output: 10x smaller reply for same task
   ```
-- **What fills it** — system ~6k + tools ~8k + CLAUDE.md tiny + history ~45% (replies culprit) + file/Bash outputs + skills/MCP + 33k reserved for summaries. Usable ~150k.
+
+### Space
+
+- **Fixed ~23% you cannot touch** — system prompt ~6k (3%), tool schemas ~8k (4%), compact reserve ~33k (16.5%); junk like venvs never deserves the rest — verify with:
+
   ```bash
   cat .claudeignore
   # node_modules/ .venv/ dist/ build/ *.log .env
   # expected output: junk Claude must never read
   ```
-- **When full** — 120k degrade → 75-92% auto-compact (auto summary, lossy, mid-task, no control) → repeat compacts corrupt → hard stop at buffer full.
+
+Full numbers (usable space is really ~150k of 200k):
+
+| Slice | Tokens | Share | Can you shrink it? |
+|---|---|---|---|
+| System prompt (fixed) | ~6,000 | ~3% | No — Anthropic overhead |
+| Built-in tool schemas (fixed) | ~8,000 | ~4% | No — always loaded |
+| Compact reserve (locked) | ~33,000 | ~16.5% | No — saved for summaries |
+| Conversation history (grows) | ~90,000+ | ~45%+ | YES — fresh sessions, `/compact` |
+| Tool results + MCP + skills + memory (grows) | ~rest | ~31% | YES — ignore files, few servers |
+
+### Habits
+
+- **Compact on your terms** — auto-compact strikes ~75–92% mid-task and corrupts; run `/compact` yourself at 70–75% between tasks.
+
   ```text
   /compact
   # expected output: manual summary at safe gap, Ctrl+O to review
   ```
-- **Fixes** — `/compact` at 70-75% between tasks; subagents (child helpers with own 200k, return summary, parallel); `/clear` wipes chat; new session per feature.
-  ```text
-  /clear
-  # expected output: history deleted, same session ID
-  ```
-- **Habits** — one session per feature; `/context` often; sharp prompts (vague = long exploring answers); isolates to subagents; `.claudeignore` junk.
+
+- **Fresh sessions + CLI** — one feature per session (`/clear` wipes, subagents offload); full power needs the terminal.
+
   ```bash
-  printf "node_modules/\n.venv/\ndist/\n.env\n" > .claudeignore
+  printf "node_modules/
+.venv/
+dist/
+.env
+" > .claudeignore
   # expected output: smaller, faster reads
-  ```
-- **Terminal vs GUI** — CLI full power; VS Code/Desktop/Web limited. Memory, hooks, subagents need terminal.
-  ```bash
-  claude
-  # expected output: full slash + hooks + /agents available
   ```
 
 > You can now: keep every session lean and cheap.
@@ -66,15 +85,26 @@ LLMs (text predictors with no memory) forget unless app resends history. Long ch
 ## 3. Visual
 
 ```mermaid
+pie showData title Context window 200k, who eats what
+  "History ~45%" : 45
+  "Flexible rest ~31%" : 31
+  "Compact reserve ~16%" : 17
+  "Tool schemas ~4%" : 4
+  "System prompt ~3%" : 3
+```
+
+Read it: the fixed slices (system + tools + reserve ≈ 23%) are untouchable — all management happens in the growth slices (history + outputs ≈ 77%).
+
+```mermaid
 flowchart LR
   A[Turn 1: 200] --> B[Turn 2: resend + new = 400]
   B --> C[Turn 10: 2000 linear vs 11000 actual]
   C --> D{70% full?}
-  D -->|yes| E[/compact or fresh session]
+  D -->|yes| E[compact or fresh session]
   D -->|no| F[Keep + subagents for heavy]
 ```
 
-PDF tables: per-turn 200→2000, 1×40 vs 4×10 save 73%, 200k−6k−8k−33k≈150k usable.
+Read it: every turn resends all history, so cost climbs like a staircase — the only exits are compacting between tasks or starting fresh per feature.
 
 ## 4. Use cases
 
@@ -88,10 +118,13 @@ PDF tables: per-turn 200→2000, 1×40 vs 4×10 save 73%, 200k−6k−8k−33k�
 ## 5. AI-era leverage
 
 - **Token saver:** split work before overpay.
+
   ```text
   Ask AI: "This chat is 65% full. Summarize done vs pending in 5 lines so I can /compact safely."
   ```
+
 - **Prompt sharpener:** cut exploring answers.
+
   ```text
   Ask AI: "Rewrite my vague prompt into @ files + must/must-not + 5-line scope to save tokens."
   ```
@@ -99,10 +132,13 @@ PDF tables: per-turn 200→2000, 1×40 vs 4×10 save 73%, 200k−6k−8k−33k�
 ## 6. Limits & tradeoffs
 
 - Compaction is lossy — breaks as: details vanish — instead do: specs + CLAUDE.md on disk survive; chat does not.
+
 - `/clear` is nuclear — breaks as: needed history gone — instead do: `/export` first.
+
 - Subagents add hops — breaks as: tiny task slower — instead do: direct for 2-line fixes.
+
 - Open aspects: memory files in [[06-CLAUDE-md-Memory|06 Memory]]; subagent math in [[10-Subagents|10 Subagents]].
 
 ## 7. Related
 
-- [[../Claude-Code|Claude Code hub]] · [[04-Making-Code-Changes|04 Changes]] · [[10-Subagents|10 Subagents]] · [[../context/Claude-Code.resources]] · [[../context/Claude-Code.build]]
+- [[../Claude-Code|Claude Code hub]] · [[../context/Claude-Code.resources]] · [[../context/Claude-Code.build]]

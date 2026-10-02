@@ -3,7 +3,7 @@ topic: CLAUDE md Memory
 domain: AI-Engineering
 status: researched
 updated: 2026-10-02
-related: ["[[../Claude-Code]]", "[[05-Context-Window-Management|Context]]"]
+related: ["[[../Claude-Code]]"]
 tags: [claude-code, claude-md, memory, rules, auto-memory]
 ---
 
@@ -24,38 +24,70 @@ Re-explaining project each chat is slow + error-prone. One file with facts = no 
 
 ## 2. How it works
 
-- **Make it** — manual `CLAUDE.md` CAPITALS at root, or `/init` scan then prune. Commit it.
+### Write it
+
+- **/init then prune** — auto-draft is ~30% right; you add workflows + taboos, then commit it like code.
+
   ```bash
   ls CLAUDE.md && git add CLAUDE.md
   # expected output: file present + staged
   ```
-- **6 ideal parts + roadmap** — overview line, architecture (routers/services/schemas), style (type hints, small funcs), libs (use X, not Y), commands (`pip install`, `uvicorn`, `pytest`), critical no-dos (don't touch database.py, no auto UUIDs) + route table Done/Pending.
+
+- **Six parts + roadmap** — overview, architecture, style, libs, commands, never-dos — plus a Done/Pending route table.
+
   ```markdown
   # Spendly
   Routes in app.py, logic in database/db.py. Use parameterized SQL only.
   # expected output: Claude follows without asking
   ```
-- **.claude layout** — `settings.local.json` (personal perms), `commands/` (slash), `rules/` (split topics, lazy), `skills/`, `agents/`.
-  ```bash
-  ls .claude/
-  # expected output: settings.local.json commands/ rules/ skills/ agents/
-  ```
-- **5 file types** — root `./CLAUDE.md` (every session, shared), `.claude/CLAUDE.md` (same), `CLAUDE.local.md` (personal, gitignored), `~/.claude/CLAUDE.md` (all projects), `folder/CLAUDE.md` (lazy when there).
+
+### Shape it
+
+- **Five homes** — root + `.claude/` shared every session; `.local` private; `~/.claude` global; subfolders lazy.
+
   ```bash
   cat .claude/CLAUDE.md
   # expected output: team rules loaded each session
   ```
-- **Good habits** — start /init then cut junk; only universal rules; IMPORTANT once max; <200 lines (more = worse following); living doc; "fix once → codify"; audit monthly.
-  ```bash
-  wc -l CLAUDE.md
-  # expected output: under 200 lines
+
+- **Full map** — project side plus machine side; "claude25" = `CLAUDE.md`, "claude local" = `CLAUDE.local.md`; `analysis.json` is not a real file (see `settings.local.json`, `.mcp.json`).
+
+  ```text
+  my-project/
+  ├── CLAUDE.md                  # team memory, committed
+  ├── CLAUDE.local.md            # your private notes, gitignored
+  ├── .mcp.json                  # team MCP servers (project ROOT, not in .claude/)
+  └── .claude/
+      ├── settings.json          # team settings, committed
+      ├── settings.local.json    # your overrides, gitignored
+      ├── commands/              # legacy slash prompts, e.g. seed-user.md
+      ├── skills/                # expertise packs: <name>/SKILL.md
+      ├── agents/                # subagents: <name>.md
+      ├── rules/                 # topic + path-scoped rules: *.md
+      ├── hooks/                 # event scripts: *.sh, *.py
+      └── output-styles/         # custom reply styles: *.md
+
+  ~/.claude/                      # your machine, all projects
+  ├── CLAUDE.md                  # personal memory
+  ├── settings.json              # your defaults
+  ├── skills/ agents/ commands/ output-styles/  # personal packs
+  ├── themes/                    # custom terminal themes
+  ├── plugins/                   # installed plugins
+  └── projects/<project>/memory/ # Claude's auto diary
+  # expected output: you can point at any path and say who writes it + if git tracks it
   ```
-- **Big file fixes** — split to `.claude/rules/code-style.md` etc (lazy per topic); `@docs/api.md` imports (loads on ref); subfolder CLAUDE.md for multi-area.
+
+- **Short by design** — under 200 lines, IMPORTANT at most once; split topics to `rules/`, `@`-import shared docs.
+
   ```markdown
   See @docs/api-guidelines.md
   # expected output: loads only when referenced
   ```
-- **Auto memory** — Claude silently saves IST timezone, INR not USD etc to `~/.claude/projects/<name>/memory/memory.md` (top 200 lines load). Add via "Update your memory" or `/memory` (project/user/auto options).
+
+### Remember
+
+- **Living doc + diary** — refresh after each feature, audit monthly; auto memory notes silently, top 200 lines load.
+
   ```text
   /memory
   # expected output: 3 choices + toggle, open memory.md
@@ -73,7 +105,7 @@ flowchart LR
   D --> E[Refresh CLAUDE.md after feature]
 ```
 
-PDF tables: project vs global .claude, 5 types matrix, 3 big-file fixes, memory trio (programmer vs Claude writes).
+Also tabulated: project vs global .claude, 5 types matrix, 3 big-file fixes, memory trio (programmer vs Claude writes).
 
 ## 4. Use cases
 
@@ -87,10 +119,13 @@ PDF tables: project vs global .claude, 5 types matrix, 3 big-file fixes, memory 
 ## 5. AI-era leverage
 
 - **Mistake catcher:** turn fix into rule.
+
   ```text
   Ask AI: "Claude used f-string SQL again. Write a 2-line CLAUDE.md rule + 1-line memory entry to stop it."
   ```
+
 - **Onboarder:** generate starter then trim.
+
   ```text
   Ask AI: "Review this /init CLAUDE.md. Delete fluff, keep commands, style, no-dos. Keep under 120 lines."
   ```
@@ -98,10 +133,13 @@ PDF tables: project vs global .claude, 5 types matrix, 3 big-file fixes, memory 
 ## 6. Limits & tradeoffs
 
 - Auto 30% only — breaks as: trusting raw /init — instead do: add workflows, constraints, roadmap yourself.
+
 - Too many IMPORTANTS — breaks as: none matter — instead do: one truly critical flag.
+
 - Memory is local — breaks as: new laptop = blank — instead do: commit CLAUDE.md, copy memory.md manually.
-- Open aspects: skills pack procedures in [[09-Skills|09 Skills]]; enforcement via hooks in [[12-Hooks-Plugins-Deploy|12 Hooks]].
+
+- Open aspects: skills pack procedures in [[09-Skills|09 Skills]]; enforcement via hooks in [[13-Hooks-Plugins-Deploy|13 Hooks]].
 
 ## 7. Related
 
-- [[../Claude-Code|Claude Code hub]] · [[05-Context-Window-Management|05 Context]] · [[09-Skills|09 Skills]] · [[../context/Claude-Code.resources]] · [[../context/Claude-Code.build]]
+- [[../Claude-Code|Claude Code hub]] · [[../context/Claude-Code.resources]] · [[../context/Claude-Code.build]]

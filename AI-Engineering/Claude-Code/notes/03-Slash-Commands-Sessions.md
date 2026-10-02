@@ -3,7 +3,7 @@ topic: Slash Commands Sessions
 domain: AI-Engineering
 status: researched
 updated: 2026-10-02
-related: ["[[../Claude-Code]]", "[[02-Setup-Bash-Git-Ollama|Setup]]"]
+related: ["[[../Claude-Code]]"]
 tags: [claude-code, slash-commands, sessions, models, permissions]
 ---
 
@@ -24,45 +24,52 @@ Typing full prompts for repeat jobs wastes time. `/model` beats "please show me 
 
 ## 2. How it works
 
-- **Two kinds** — built-in (ships with tool: `/exit`, `/model`) vs custom (you make: `/seed-user`).
-  ```text
-  /<name> -> saved prompt -> workflow runs
-  # expected output: command executes without retyping
-  ```
-- **Sessions** — ID + full history + folder, saved to `~/.claude/projects/`.
+### Sessions
+
+- **One task, one session** — chat from `claude` to `/exit` (ID + history + folder, auto-saved); resume via `claude -r` outside, `/resume` inside.
+
   ```bash
   claude -r
   # expected output: list to resume (from terminal, before starting)
   ```
-- **Inside resume** — `/resume` picks a past session from inside a running one.
-  ```text
-  /resume
-  # expected output: picker, Enter to jump
-  ```
-- **Core 5 to learn first** — `/exit` closes, `/rename intro-session` names, `/btw` side-asks without history, `/export file.md` saves, `/usage` shows tokens.
+
+- **Name + protect** — `/rename` immediately, `/export` before big refactors, `/btw` for side questions that vanish from history.
+
   ```text
   /btw What is Jinja templating in Flask?
   # expected output: parallel answer, Space dismisses, never enters context
   ```
-- **Models** — Opus 4.6 ($5/$25, 1M in, 128k out, slow smart) for planning; Sonnet 4.6 ($3/$15, 1M in, 64k out) for code; Haiku 4.5 ($1/$5, 200k in, 64k out, fastest). Pattern: Opus plans → Sonnet builds.
+
+### Models + cost
+
+- **Opus plans, Sonnet builds** — Opus 4.6 deep thinker ($5/$25, 1M) for planning; Sonnet 4.6 ($3/$15, 1M) for code; Haiku 4.5 ($1/$5, 200k) fastest.
+
   ```text
   /model
   # expected output: opus-4-6 / sonnet-4-6 / haiku-4-5 picker
   ```
-- **Usage trio** — `/usage` (session + weekly), `/extra-usage` ($5/$10 top-up), `/stats` (tokens, models, streak), `/insights` (HTML report: rights/wrongs + next workflows).
+
+- **Watch spend** — `/usage` (session + weekly), `/extra-usage` top-up, `/stats`, `/insights` HTML coach.
+
   ```text
   /usage
   # expected output: current session + weekly limit numbers
   ```
-- **Config + permissions** — `/config` toggles auto-compact, thinking, progress bar, turn time, permission mode, update channel. `/permissions` tabs Allow/Ask(default)/Deny/Workspace; scopes local-project / global-project (in `.claude/`) / user. Tools: Read, Write, Bash, Web Search.
+
+### Commands
+
+- **Two kinds** — built-ins ship ready (`/exit`, `/model`); customs you save for repeats (full guide in 08).
+
+  ```text
+  /<name> -> saved prompt -> workflow runs
+  # expected output: command executes without retyping
+  ```
+
+- **Config + personal** — `/config` flips behavior; `/permissions` gates tools as Allow/Ask/Deny; `/theme`, `/voice` for looks + dictation.
+
   ```text
   /permissions
   # expected output: 4 tabs, be strict with Allow list
-  ```
-- **Theme + voice** — `/theme` dark/light; `/voice` hold Space to speak, `/voice` again to off.
-  ```text
-  /theme
-  # expected output: appearance picker
   ```
 
 > You can now: run a clean one-task session and check cost before limits hit.
@@ -71,13 +78,13 @@ Typing full prompts for repeat jobs wastes time. `/model` beats "please show me 
 
 ```mermaid
 flowchart LR
-  A[/ + picker] --> B[Session: ID + history + folder]
+  A[Type slash to list] --> B[Session: ID + history + folder]
   B --> C[One task + rename + btw + export]
-  C --> D[Opus plan -> Sonnet build]
+  C --> D[Opus plans, Sonnet builds]
   D --> E[usage + config + permissions]
 ```
 
-PDF art: session file tree under `~/.claude/projects/`, `/btw` parallel bubble, model price table.
+Pictured: session file tree under `~/.claude/projects/`, `/btw` parallel bubble, model price table.
 
 ## 4. Use cases
 
@@ -91,10 +98,13 @@ PDF art: session file tree under `~/.claude/projects/`, `/btw` parallel bubble, 
 ## 5. AI-era leverage
 
 - **Cost guard:** stop surprise caps mid-demo.
+
   ```text
   Ask AI: "I run /usage and see 70% weekly used. Should I /compact, /clear, or buy /extra-usage for a 2-hour auth task? Decide in 3 lines."
   ```
+
 - **Session hygiene bot:** enforce naming + commits.
+
   ```text
   Ask AI: "Make me a 4-line session start checklist: rename, pull, branch, commit rule. I will paste it every time."
   ```
@@ -102,10 +112,13 @@ PDF art: session file tree under `~/.claude/projects/`, `/btw` parallel bubble, 
 ## 6. Limits & tradeoffs
 
 - Too many sessions = lost history — breaks as: fix needs old context — instead do: `/resume` + good names, export key ones.
+
 - `/insights` HTML is advice, not truth — breaks as: following every suggestion — instead do: pick one workflow to try.
+
 - Voice needs mic + quiet — breaks as: noisy mis-transcribe — instead do: type for exact file paths.
+
 - Open aspects: code tasks in [[04-Making-Code-Changes|04 Changes]]; context math in [[05-Context-Window-Management|05 Context]]; sources in [[../context/Claude-Code.resources]].
 
 ## 7. Related
 
-- [[../Claude-Code|Claude Code hub]] · [[02-Setup-Bash-Git-Ollama|02 Setup]] · [[04-Making-Code-Changes|04 Changes]] · [[../context/Claude-Code.resources]] · [[../context/Claude-Code.build]]
+- [[../Claude-Code|Claude Code hub]] · [[../context/Claude-Code.resources]] · [[../context/Claude-Code.build]]

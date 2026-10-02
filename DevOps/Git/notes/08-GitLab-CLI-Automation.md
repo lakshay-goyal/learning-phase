@@ -26,18 +26,21 @@ glab issue list --per-page 5
 ## 2. How it works
 
 - **Login.** Works against gitlab.com or your company's own GitLab address (auto-detected from your remotes). Full power needs a token with `api` scope.
+
   ```bash
   glab auth login
   glab auth status
   ```
 
 - **Projects (= repos).** Same verbs as GitHub, plus GitLab ideas: namespaces/groups (folders for projects), visibility per project.
+
   ```bash
   glab repo clone group/project
   glab repo view --web
   ```
 
 - **Requests (the core loop).** Review cycle mirrors 07: check out → read → comment/approve → merge. Approvals are first-class (projects can require N approvals).
+
   ```bash
   git switch -c feat && git commit -am "add x" && git push -u origin feat
   glab mr create --fill --target-branch main --remove-source-branch
@@ -49,6 +52,7 @@ glab issue list --per-page 5
   ```
 
 - **Tasks.** Notes = comments; threads resolve like GitHub review threads.
+
   ```bash
   glab issue create --title "Crash on empty email" --label bug
   glab issue list --label bug
@@ -56,6 +60,7 @@ glab issue list --per-page 5
   ```
 
 - **Automate both CLIs the same way.** List as JSON → filter with `jq` → act. Never scrape human tables.
+
   ```bash
   glab mr list --output json | jq '.[] | {iid, title, author}'
   glab api projects --paginate | jq '.[].name'
@@ -99,22 +104,28 @@ One map to memorize: PR=MR, `gh`=GitHub, `glab`=GitLab, `api+jq`=both.
 ## 5. AI-era leverage
 
 - **One reviewer script for both platforms** — swap `pr`↔`mr`, keep the `jq` filters.
+
   ```bash
   gh pr list --json number,title --jq '.[].title'
   glab mr list --output json | jq '.[].title'
   ```
+
   ```text
   Ask AI: "Here are open request titles from both platforms (pasted). Group them by risk: safe to merge, needs tests, needs human review."
   ```
+
 - **Agent opens with `--fill`** (description linked to the task); humans approve from the terminal after `diff`.
 
 ## 6. Limits & tradeoffs
 
 - `glab` follows GitLab's web surface — older company servers can break new flags. Instead: pin CLI per instance, fall back to `api`.
+
 - Request approvals/rules live server-side; the CLI can't bypass them (by design). Automation proposes, policy disposes.
+
 - Fewer extensions than `gh` — default to `api` scripts over plugins.
+
 - Track complete: hub [[../Git|Git hub]] · model [[01-Fundamentals|01]] · history [[02-Commits-History|02]] · branches [[03-Branches-Remotes|03]] · combining [[04-Merge-Rebase|04]]. Sources in [[../context/Git.resources]]; proof in [[../context/Git.build]].
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[07-GitHub-CLI|07 gh]] · [[01-Fundamentals|01 Fundamentals]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[../context/Git.resources]] · [[../context/Git.build]]

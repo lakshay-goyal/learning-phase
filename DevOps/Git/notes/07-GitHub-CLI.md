@@ -26,6 +26,7 @@ gh issue list --limit 5
 ## 2. How it works
 
 - **Login once.** Badge stored, used for both site actions and `git push`.
+
   ```bash
   gh auth login
   gh auth status              # who/where — run this first when a command says 403
@@ -33,6 +34,7 @@ gh issue list --limit 5
   ```
 
 - **Projects.** Publish local work, grab others', target any repo from anywhere with `-R`.
+
   ```bash
   gh repo create my-app --private --source=. --push   # publish this folder
   gh repo clone owner/repo
@@ -40,6 +42,7 @@ gh issue list --limit 5
   ```
 
 - **Requests (the core loop).** Full review cycle without leaving the shell.
+
   ```bash
   git switch -c feat && git commit -am "add x" && git push -u origin feat
   gh pr create --title "Add x" --body "Why + what + tests"
@@ -51,6 +54,7 @@ gh issue list --limit 5
   ```
 
 - **Tasks.** Labels/assignees/milestones are the triage fields; writing `Fixes #n` in a request auto-closes task `n` on merge.
+
   ```bash
   gh issue create --title "Login breaks on empty email" --label bug
   gh issue list --label bug
@@ -59,12 +63,14 @@ gh issue list --limit 5
   ```
 
 - **Ship versions.** Tag (see 06) + notes + files = a downloadable release.
+
   ```bash
   gh release create v1.0.0 --title "v1.0.0" --generate-notes
   gh release list
   ```
 
 - **Automate with JSON, never scrape tables.** `--json` + `--jq` keep scripts stable.
+
   ```bash
   gh pr list --json number,title,author --jq '.[] | select(.author.login=="me")'
   gh api repos/owner/repo --paginate --jq '.name'
@@ -103,14 +109,18 @@ Terminal loop to memorize: `pr create` → `pr view` → `pr checkout` → `pr d
 ## 5. AI-era leverage
 
 - **Agents open, humans review from the terminal** — local testing beats reading pasted code in chat.
+
   ```bash
   gh pr checkout 12 && npm test
   gh pr diff --name-only
   ```
+
   ```text
   Ask AI: "PR #12 is checked out locally. Summarize its diff in 5 bullets and list what tests I should run."
   ```
+
 - **Nightly triage without meetings:** list → filter stale with `jq` → nudge.
+
   ```bash
   gh issue list --json number,title,updatedAt --jq '.[] | select(.title | contains("stale"))'
   ```
@@ -118,13 +128,17 @@ Terminal loop to memorize: `pr create` → `pr view` → `pr checkout` → `pr d
 ## 6. Limits & tradeoffs
 
 - `gh` inherits your login's permissions — weak tokens fail with 403. Instead: `auth status`/`refresh` first.
+
   ```bash
   gh auth status && gh auth refresh
   ```
+
 - Terminal reviews lack rich UI (suggestion buttons, huge build tables) — use `--web` for those, CLI for the loop.
+
 - Scripts built on human-readable tables break on the next update — always `--json` + `--jq` for machines.
+
 - Next: GitLab's twin in [[08-GitLab-CLI-Automation|08 GitLab CLI & Automation]]; history underneath in [[02-Commits-History|02 Commits]]. Sources in [[../context/Git.resources]]; proof in [[../context/Git.build]].
 
 ## 7. Related
 
-- [[../Git|Git hub]] · [[06-Tags-Worktrees-Internals|06 Tags]] · [[08-GitLab-CLI-Automation|08 glab]] · [[DevOps|DevOps MOC]] · [[../context/Git.resources]] · [[../context/Git.build]]
+- [[../Git|Git hub]] · [[../context/Git.resources]] · [[../context/Git.build]]
